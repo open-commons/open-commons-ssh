@@ -15,6 +15,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -26,7 +27,7 @@ import com.jcraft.jsch.Session;
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public class SshConnection implements AutoCloseable {
+public class SshConnection {
 
     /** 서버 사용자 계정 */
     @NotNull
@@ -47,9 +48,6 @@ public class SshConnection implements AutoCloseable {
     @Min(1)
     @Max(65535)
     private final int port;
-
-    /** 현재 세션 */
-    private Session session;
 
     /**
      * <br>
@@ -80,17 +78,6 @@ public class SshConnection implements AutoCloseable {
     }
 
     /**
-     * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     *
-     * @see java.lang.AutoCloseable#close()
-     */
-    @Override
-    public void close() {
-        disconnect();
-    }
-
-    /**
      * SSH 세션 정보를 제공한다. <br>
      * 
      * <pre>
@@ -106,30 +93,16 @@ public class SshConnection implements AutoCloseable {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    public Session connect() throws JSchException {
-
-        if (this.session != null && this.session.isConnected()) {
-            return this.session;
-        }
+    public Session createSession() throws JSchException {
 
         JSch sch = new JSch();
         // #1. 신규 세션 생성
-        this.session = sch.getSession(this.username, this.host, this.port);
+        Session session = sch.getSession(this.username, this.host, this.port);
         // #2. 비밀번호 설정
         SshUserInfo userInfo = new SshUserInfo(this.password, "Are you sure you want to continue connecting");
-        this.session.setUserInfo(userInfo);
-        // #3. 연결
-        this.session.connect();
+        session.setUserInfo(userInfo);
 
         return session;
-    }
-
-    public void disconnect() {
-        if (this.session == null) {
-            return;
-        }
-
-        this.session.disconnect();
     }
 
     /**
@@ -216,6 +189,25 @@ public class SshConnection implements AutoCloseable {
         return username;
     }
 
+    @SuppressWarnings("unchecked")
+    public <T extends Channel> T openChannel(Session session, ChannelType type) throws JSchException {
+        switch (type) {
+            case AUTH_AGENT_AT_OPENSSH_DOT_COM:
+            case DIRECT_TCPIP:
+            case EXEC:
+            case FORWARDED_TCPIP:
+            case SESSION:
+            case SFTP:
+            case SHELL:
+            case SUBSYSTEM:
+            case X11:
+                return (T) session.openChannel(type.get());
+            default:
+                // unreachable code
+                throw new IllegalArgumentException("Not Supoorted Type=" + type);
+        }
+    }
+
     /**
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
@@ -233,8 +225,6 @@ public class SshConnection implements AutoCloseable {
         builder.append(host);
         builder.append(", port=");
         builder.append(port);
-        builder.append(", session=");
-        builder.append(session);
         builder.append("]");
         return builder.toString();
     }

@@ -1,0 +1,347 @@
+/*
+ *
+ * This file is generated under this project, "open-commons-ssh".
+ *
+ * Date  : 2020. 10. 14. 오후 9:09:54
+ *
+ * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * 
+ */
+
+package open.commons.ssh.file;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
+
+import open.commons.Result;
+
+/**
+ * 
+ * @since 2020. 10. 14.
+ * @version
+ * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ */
+public interface IFileUpload {
+
+    /***
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            업로드할 데이터
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> upload(byte[] content, String remoteFilepath);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            업로드할 데이터
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> upload(byte[] content, String remoteFilepath, int connectTimeout);
+
+    /***
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param file
+     *            업로드할 파일
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws FileNotFoundException
+     */
+    Result<Boolean> upload(File file, String remoteFilepath) throws IOException;
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param file
+     *            업로드할 파일
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws FileNotFoundException
+     */
+    Result<Boolean> upload(File file, String remoteFilepath, int connectTimeout) throws IOException;
+
+    /***
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            업로드할 데이터
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> upload(InputStream content, String remoteFilepath);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            업로드할 데이터
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> upload(InputStream content, String remoteFilepath, int connectTimeout);
+
+    /***
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param path
+     *            업로드할 파일
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws IOException
+     */
+    Result<Boolean> upload(Path path, String remoteFilepath) throws IOException;
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param path
+     *            업로드할 파일
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws IOException
+     */
+    Result<Boolean> upload(Path path, String remoteFilepath, int connectTimeout) throws IOException;
+
+    /***
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param path
+     *            업로드할 파일 경로 (절대경로)
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws IOException
+     */
+    Result<Boolean> upload(String path, String remoteFilepath) throws IOException;
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param path
+     *            업로드할 파일 경로 (절대경로)
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @throws IOException
+     */
+    Result<Boolean> upload(String path, String remoteFilepath, int connectTimeout) throws IOException;
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            문자열 데이터. (파일 경로가 아님).
+     * @param remoteFilepath
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> uploadString(String content, String remoteFilepath);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            문자열 데이터. (파일 경로 아님)
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param charset
+     *            문자열 캐릭터 셋
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> uploadString(String content, String remoteFilepath, Charset charset);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            문자열 데이터. (파일 경로 아님)
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> uploadString(String content, String remoteFilepath, int connectTimeout);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 14.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param content
+     *            문자열 데이터. (파일 경로 아님)
+     * @param remoteFilepath
+     *            서버 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위, ms)
+     * @param charset
+     *            문자열 캐릭터 셋
+     * @return
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    Result<Boolean> uploadString(String content, String remoteFilepath, int connectTimeout, Charset charset);
+
+}
