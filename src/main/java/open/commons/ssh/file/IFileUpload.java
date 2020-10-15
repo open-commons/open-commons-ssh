@@ -37,16 +37,16 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            업로드할 데이터
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> upload(byte[] content, String remoteFilepath);
+    Result<Boolean> upload(byte[] source, String destination);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -58,10 +58,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            업로드할 데이터
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -69,7 +69,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> upload(byte[] content, String remoteFilepath, int connectTimeout);
+    Result<Boolean> upload(byte[] source, String destination, int connectTimeout);
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -81,17 +81,17 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param file
-     *            업로드할 파일
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws FileNotFoundException
      */
-    Result<Boolean> upload(File file, String remoteFilepath) throws IOException;
+    Result<Boolean> upload(File source, String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -103,10 +103,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param file
-     *            업로드할 파일
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -115,7 +115,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws FileNotFoundException
      */
-    Result<Boolean> upload(File file, String remoteFilepath, int connectTimeout) throws IOException;
+    Result<Boolean> upload(File source, String destination, int connectTimeout) throws IOException;
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -127,16 +127,16 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            업로드할 데이터
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> upload(InputStream content, String remoteFilepath);
+    Result<Boolean> upload(InputStream source, String destination);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -148,10 +148,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            업로드할 데이터
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -159,7 +159,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> upload(InputStream content, String remoteFilepath, int connectTimeout);
+    Result<Boolean> upload(InputStream source, String destination, int connectTimeout);
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -171,17 +171,17 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param path
-     *            업로드할 파일
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws IOException
      */
-    Result<Boolean> upload(Path path, String remoteFilepath) throws IOException;
+    Result<Boolean> upload(Path source, String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -193,10 +193,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param path
-     *            업로드할 파일
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -205,7 +205,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws IOException
      */
-    Result<Boolean> upload(Path path, String remoteFilepath, int connectTimeout) throws IOException;
+    Result<Boolean> upload(Path source, String destination, int connectTimeout) throws IOException;
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -217,17 +217,17 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param path
-     *            업로드할 파일 경로 (절대경로)
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws IOException
      */
-    Result<Boolean> upload(String path, String remoteFilepath) throws IOException;
+    Result<Boolean> upload(String source, String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -239,10 +239,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param path
-     *            업로드할 파일 경로 (절대경로)
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param source
+     *            업로드할 데이터 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -251,7 +251,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      * @throws IOException
      */
-    Result<Boolean> upload(String path, String remoteFilepath, int connectTimeout) throws IOException;
+    Result<Boolean> upload(String source, String destination, int connectTimeout) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다.<br>
@@ -263,15 +263,15 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            문자열 데이터. (파일 경로가 아님).
-     * @param remoteFilepath
+     * @param destination
      * @return
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> uploadString(String content, String remoteFilepath);
+    Result<Boolean> uploadString(String source, String destination);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -283,10 +283,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            문자열 데이터. (파일 경로 아님)
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param charset
      *            문자열 캐릭터 셋
      * @return
@@ -294,7 +294,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> uploadString(String content, String remoteFilepath, Charset charset);
+    Result<Boolean> uploadString(String source, String destination, Charset charset);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -306,10 +306,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            문자열 데이터. (파일 경로 아님)
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @return
@@ -317,7 +317,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> uploadString(String content, String remoteFilepath, int connectTimeout);
+    Result<Boolean> uploadString(String source, String destination, int connectTimeout);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -329,10 +329,10 @@ public interface IFileUpload {
      * 2020. 10. 14.		박준홍			최초 작성
      * </pre>
      *
-     * @param content
+     * @param source
      *            문자열 데이터. (파일 경로 아님)
-     * @param remoteFilepath
-     *            서버 저장 경로 (절대경로)
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
      *            접속대기 제한시간 (단위, ms)
      * @param charset
@@ -342,6 +342,6 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    Result<Boolean> uploadString(String content, String remoteFilepath, int connectTimeout, Charset charset);
+    Result<Boolean> uploadString(String source, String destination, int connectTimeout, Charset charset);
 
 }

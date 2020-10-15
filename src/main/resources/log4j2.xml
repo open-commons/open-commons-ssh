@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="stdout">
+			<PatternLayout
+				pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} | %-10t | %5p| %m (%C{1}.java:%L)%n}{WARN=Bright magenta, DEBUG=White, TRACE=Yellow}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="open.commons.ssh" level="DEBUG" additivity="false">
+			<AppenderRef ref="stdout" />
+		</Logger>
+		<Root level="ERROR" additivity="true">
+			<AppenderRef ref="stdout" />
+		</Root>
+	</Loggers>
+</Configuration>

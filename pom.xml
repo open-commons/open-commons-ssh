@@ -21,8 +21,9 @@
 
 		<!-- >>> begin: dependencies -->
 		<slf4j-api.version>1.7.26</slf4j-api.version>
-		<org.apache.logging.lo4j-core.version>[2.13.2]</org.apache.logging.lo4j-core.version>
-		<org.apache.logging.lo4j-api.version>[2.13.2]</org.apache.logging.lo4j-api.version>
+		<log4j-slf4j.version>2.13.3</log4j-slf4j.version>
+		<org.apache.logging.log4j-core.version>[2.13.2]</org.apache.logging.log4j-core.version>
+		<org.apache.logging.log4j-api.version>[2.13.2]</org.apache.logging.log4j-api.version>
 
 		<open-commons-core.version>1.7.0-SNAPSHOT</open-commons-core.version>
 
@@ -77,12 +78,12 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.logging.lo4j-core.version}</version>
+			<version>${org.apache.logging.log4j-core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>${org.apache.logging.lo4j-api.version}</version>
+			<version>${org.apache.logging.log4j-api.version}</version>
 		</dependency>
 		<!-- end: log4j2 -->
 
@@ -92,6 +93,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j-slf4j.version}</version><!-- $NO-MVN-MAN-VER$ -->
 		</dependency>
 		<!-- end: slf4j -->
 
@@ -137,10 +144,6 @@
 		</dependency>
 		<!-- end: validation -->
 		<!-- ************** -->
-
-
-
-
 
 		<dependency>
 			<groupId>junit</groupId>
