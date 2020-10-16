@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import open.commons.Result;
 import open.commons.ssh.function.JSchFunction;
+import open.commons.utils.IOUtils;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSchException;
@@ -71,9 +72,7 @@ public abstract class SshClient implements AutoCloseable {
      */
     @Override
     public void close() {
-        if (this.session != null) {
-            this.session.disconnect();
-        }
+        IOUtils.close(this.ssh);
     }
 
     /**
@@ -134,8 +133,58 @@ public abstract class SshClient implements AutoCloseable {
      *
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * 
+     * @see #getSession(boolean, int)
      */
     protected Session getSession() throws JSchException {
+        return getSession(true, DEFAULT_CONNECT_TIMEOUT);
+    }
+
+    /**
+     * 내부 {@link Session} 객체를 생성한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 10. 14.        박준홍         최초 작성
+     * </pre>
+     * 
+     * @param autoConnect
+     *            대상 서버 자동 연결 여부
+     *
+     * @return
+     * @throws JSchException
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected Session getSession(boolean autoConnect) throws JSchException {
+        return getSession(autoConnect, DEFAULT_CONNECT_TIMEOUT);
+    }
+
+    /**
+     * 내부 {@link Session} 객체를 생성한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 10. 14.        박준홍         최초 작성
+     * </pre>
+     * 
+     * @param autoConnect
+     *            대상 서버 자동 연결 여부
+     * @param connectTimeout
+     *            서버연결 대기시간 (단위: ms)
+     *
+     * @return
+     * @throws JSchException
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected Session getSession(boolean autoConnect, int connectTimeout) throws JSchException {
         ReentrantLock lock = new ReentrantLock(true);
         try {
             lock.lock();
@@ -143,17 +192,42 @@ public abstract class SshClient implements AutoCloseable {
             if (this.session == null || !this.session.isConnected()) {
                 this.session = this.ssh.createSession();
 
-                Properties config = new java.util.Properties();
-                config.put("StrictHostKeyChecking", "no");
-                session.setConfig(config);
+                if (!this.session.isConnected() && autoConnect) {
+                    Properties config = new java.util.Properties();
+                    config.put("StrictHostKeyChecking", "no");
+                    session.setConfig(config);
 
-                this.session.connect(DEFAULT_CONNECT_TIMEOUT);
+                    this.session.connect(connectTimeout);
+                }
             }
 
             return this.session;
         } finally {
             lock.unlock();
         }
+    }
+
+    /**
+     * 내부 {@link Session} 객체를 생성한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 10. 14.        박준홍         최초 작성
+     * </pre>
+     * 
+     * @param connectTimeout
+     *            서버연결 대기시간 (단위: ms)
+     *
+     * @return
+     * @throws JSchException
+     *
+     * @since 2020. 10. 14.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected Session getSession(int connectTimeout) throws JSchException {
+        return getSession(true, connectTimeout);
     }
 
     /**
@@ -200,7 +274,7 @@ public abstract class SshClient implements AutoCloseable {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean autoConnect) throws JSchException {
-        Session session = getSession();
+        Session session = getSession(true, DEFAULT_CONNECT_TIMEOUT);
         T channel = this.ssh.openChannel(session, type);
         if (autoConnect) {
             channel.connect(connectTimeout);

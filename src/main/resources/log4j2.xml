@@ -7,7 +7,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Logger name="open.commons.ssh" level="DEBUG" additivity="false">
+		<Logger name="open.commons.ssh" level="TRACE" additivity="false">
 			<AppenderRef ref="stdout" />
 		</Logger>
 		<Root level="ERROR" additivity="true">

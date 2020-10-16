@@ -105,7 +105,7 @@ public class SshUserInfo implements UserInfo {
      */
     @Override
     public boolean promptPassphrase(String message) {
-        logger.info(" > promptPassPhrase: {}", message);
+        logger.trace(" > promptPassPhrase: {}", message);
         return true;
     }
 
@@ -117,7 +117,7 @@ public class SshUserInfo implements UserInfo {
      */
     @Override
     public boolean promptPassword(String message) {
-        logger.info(" > promptPassword: {}", message);
+        logger.trace(" > promptPassword: {}", message);
         return true;
     }
 
@@ -129,7 +129,7 @@ public class SshUserInfo implements UserInfo {
      */
     @Override
     public boolean promptYesNo(String message) {
-        logger.info(" > promptYesNo: {}", message);
+        logger.trace(" > promptYesNo: {}", message);
         return true;
     }
 

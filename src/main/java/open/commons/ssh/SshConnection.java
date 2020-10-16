@@ -10,6 +10,8 @@
 
 package open.commons.ssh;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -27,7 +29,7 @@ import com.jcraft.jsch.Session;
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public class SshConnection {
+public class SshConnection implements AutoCloseable {
 
     /** 서버 사용자 계정 */
     @NotNull
@@ -48,6 +50,8 @@ public class SshConnection {
     @Min(1)
     @Max(65535)
     private final int port;
+
+    private Session session;
 
     /**
      * <br>
@@ -78,6 +82,21 @@ public class SshConnection {
     }
 
     /**
+     * @since 2020. 10. 16.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see java.lang.AutoCloseable#close()
+     */
+    @Override
+    public void close() {
+        if (this.session == null) {
+            return;
+        }
+
+        this.session.disconnect();
+    }
+
+    /**
      * SSH 세션 정보를 제공한다. <br>
      * 
      * <pre>
@@ -95,14 +114,27 @@ public class SshConnection {
      */
     public Session createSession() throws JSchException {
 
-        JSch sch = new JSch();
-        // #1. 신규 세션 생성
-        Session session = sch.getSession(this.username, this.host, this.port);
-        // #2. 비밀번호 설정
-        SshUserInfo userInfo = new SshUserInfo(this.password, "Are you sure you want to continue connecting");
-        session.setUserInfo(userInfo);
+        ReentrantLock lock = new ReentrantLock();
+        try {
+            lock.lock();
 
-        return session;
+            // 기존 세션이 유요한 경우
+            if (this.session != null && this.session.isConnected()) {
+                return this.session;
+            }
+
+            // 신규로 세션을 생성하는 경우
+            JSch sch = new JSch();
+            // #1. 신규 세션 생성
+            this.session = sch.getSession(this.username, this.host, this.port);
+            // #2. 비밀번호 설정
+            SshUserInfo userInfo = new SshUserInfo(this.password, "Are you sure you want to continue connecting");
+            this.session.setUserInfo(userInfo);
+
+            return this.session;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
