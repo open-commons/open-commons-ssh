@@ -51,6 +51,10 @@ public class SshConnection implements AutoCloseable {
     @Max(65535)
     private final int port;
 
+    /** {@link Session} 생성을 위한 Mutex 객체 */
+    private final ReentrantLock mutexSession = new ReentrantLock();
+
+    /** singleton 방식의 {@link Session} 객체 */
     private Session session;
 
     /**
@@ -114,7 +118,7 @@ public class SshConnection implements AutoCloseable {
      */
     public Session createSession() throws JSchException {
 
-        ReentrantLock lock = new ReentrantLock();
+        ReentrantLock lock = this.mutexSession;
         try {
             lock.lock();
 

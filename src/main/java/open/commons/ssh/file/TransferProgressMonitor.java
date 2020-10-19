@@ -39,6 +39,10 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     private long totalCount;
     /** 저장 진행률 */
     private double rate;
+    /** 진행상태 */
+    private boolean status = true;
+    /** 메세지 */
+    private String message;
 
     /**
      * <br>
@@ -111,7 +115,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     @Override
     public void end() {
         logger.info(String.format("[%sed] %,10d / %,10d / %.4f.", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
-            , this.totalCount, this.sourcefileSize, this.rate));
+                , this.totalCount, this.sourcefileSize, this.rate));
         logger.info("[Finished] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
     }
 
@@ -134,6 +138,27 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      */
     public String getDestination() {
         return destination;
+    }
+
+    /**
+     *
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     * 
+     * @return the message
+     *
+     * @since 2020. 10. 19.
+     * 
+     * @see #message
+     */
+    public String getMessage() {
+        return message;
     }
 
     /**
@@ -230,7 +255,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     public void init(int op, String src, String dest, long max) {
 
         logger.info("[Begin] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
-        
+
         this.op = op;
         switch (op) {
             case GET:
@@ -245,7 +270,70 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     }
 
     /**
-     * @since 2020. 10. 15.
+     *
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     * 
+     * @return the status
+     *
+     * @since 2020. 10. 19.
+     * 
+     * @see #status
+     */
+    public boolean isStatus() {
+        return status;
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param message
+     *            the message to set
+     *
+     * @since 2020. 10. 19.
+     * 
+     * @see #message
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param status
+     *            the status to set
+     *
+     * @since 2020. 10. 19.
+     * 
+     * @see #status
+     */
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    /**
+     * @since 2020. 10. 19.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      *
      * @see java.lang.Object#toString()
@@ -265,6 +353,10 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
         builder.append(totalCount);
         builder.append(", rate=");
         builder.append(rate);
+        builder.append(", status=");
+        builder.append(status);
+        builder.append(", message=");
+        builder.append(message);
         builder.append("]");
         return builder.toString();
     }

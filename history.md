@@ -1,3 +1,13 @@
+[2020/10/19]
+- Bugfix
+  + open.commons.ssh.SshConnection
+    - Session createSession(): Session 생성을 위한 Mutual Exclusive 적용
+  + open.commons.ssh.file.TransferProgressMonitor
+    - 진행상태, 메시지 추가    
+
+[2020/10/16]
+- Snapshot:0.2.0-SNAPSHOT
+
 [2020/10/16]
 - Release:0.1.0
 
