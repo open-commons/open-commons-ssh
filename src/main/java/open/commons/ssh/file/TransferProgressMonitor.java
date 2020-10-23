@@ -13,6 +13,8 @@ package open.commons.ssh.file;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import open.commons.concurrent.Mutex;
+
 import com.jcraft.jsch.SftpProgressMonitor;
 
 /**
@@ -43,6 +45,8 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     private boolean status = true;
     /** 메세지 */
     private String message;
+
+    private Mutex mutexUpdate = new Mutex("mutex for 'updated'");
 
     /**
      * <br>
@@ -97,13 +101,18 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      */
     @Override
     public boolean count(long count) {
-        this.totalCount += count;
-        this.rate = this.sourcefileSize == INIT_FILE_SIZE || this.sourcefileSize < 1 ? -1 : (double) this.totalCount / this.sourcefileSize;
 
-        logger.debug(String.format("[%sing] %,10d / %,10d / %,10d / %.4f.", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
-                , count, this.totalCount, this.sourcefileSize, this.rate));
+        synchronized (this.mutexUpdate) {
+            this.totalCount += count;
+            this.rate = this.sourcefileSize == INIT_FILE_SIZE || this.sourcefileSize < 1 ? -1 : (double) this.totalCount / this.sourcefileSize;
 
-        return true;
+            logger.debug(String.format("[%sing] %,10d / %,10d / %,10d / %.4f.", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
+                    , count, this.totalCount, this.sourcefileSize, this.rate));
+
+            this.mutexUpdate.notifyAll();
+
+            return true;
+        }
     }
 
     /**
@@ -359,6 +368,29 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
         builder.append(message);
         builder.append("]");
         return builder.toString();
+    }
+
+    /**
+     * 데이터가 갱신되었을 경우에 반환되는 비동기 지원 메소드. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     *
+     *
+     * @since 2020. 10. 19.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public void updated() {
+        synchronized (this.mutexUpdate) {
+            try {
+                this.mutexUpdate.wait();
+            } catch (InterruptedException ignored) {
+            }
+        }
     }
 
 }

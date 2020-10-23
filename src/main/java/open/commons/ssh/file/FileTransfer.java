@@ -22,6 +22,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import open.commons.Result;
 import open.commons.ssh.ChannelType;
@@ -31,9 +36,9 @@ import open.commons.ssh.function.JSchFunction;
 import open.commons.utils.ExceptionUtils;
 
 import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.ChannelSftp.LsEntry;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
-import com.jcraft.jsch.SftpProgressMonitor;
 
 /**
  * 파일 전송 기능을 제공하는 클래스.
@@ -42,10 +47,10 @@ import com.jcraft.jsch.SftpProgressMonitor;
  * @version 0.1.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public class FileTransfer extends SshClient implements IFileUpload, IFileDownload {
+public class FileTransfer extends SshClient implements IFileUpload, IFileDownload, IFile {
 
     /** 파일 전송 진행 모니터링 객체 */
-    private SftpProgressMonitor progressMonitor;
+    private TransferProgressMonitor progressMonitor;
 
     /**
      * <br>
@@ -171,12 +176,16 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 channel.get(source, destination, this.progressMonitor, ChannelSftp.OVERWRITE, 0);
                 return new Result<>(true, true);
             } catch (SftpException e) {
-                logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
+                updateProgressState(true, String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+
+                logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다. connnection={}, source={}, destination={}", this.ssh, source, destination, e);
                 throw new JSchException("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
             }
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
+            updateProgressState(true, String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+
             logger.error("파일 다운로드를 실패하였습니다. connection={}, source={}, destination={}", this.ssh, source, destination, e);
             return new Result<Boolean>().setMessage("파일 다운로드를 실패하였습니다. 원인=%s", e.getMessage());
         });
@@ -226,6 +235,10 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
         // #1. 저장할 디렉토리 확인
         Path parent = destination.getParent();
+        if (parent == null) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "잘못된 파일경로 입니다. destination=%s", destination.toString());
+        }
+
         if (!Files.exists(parent)) {
             Files.createDirectories(parent);
         }
@@ -304,8 +317,45 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * 
      * @see #progressMonitor
      */
-    public SftpProgressMonitor getProgressMonitor() {
+    public TransferProgressMonitor getProgressMonitor() {
         return progressMonitor;
+    }
+
+    /**
+     * @since 2020. 10. 23.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#list(java.lang.String)
+     */
+    @Override
+    public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath) {
+        return list(filepath, DEFAULT_CONNECT_TIMEOUT);
+    }
+
+    /**
+     * @since 2020. 10. 23.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#list(java.lang.String, int)
+     */
+    @Override
+    public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout) {
+
+        JSchFunction<ChannelSftp, Result<List<LsEntry>>> action = channel -> {
+            try {
+                ListFile lsResult = new ListFile();
+                channel.ls(filepath, lsResult);
+                return new Result<List<LsEntry>>(lsResult.getEntries(), true);
+            } catch (SftpException e) {
+                logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다. connnection={}, filepath={}", this.ssh, filepath, e);
+                throw new JSchException("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
+            }
+        };
+
+        return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
+            logger.error("파일/디렉토리 조회를 실패하였습니다. connection={}, filepath={}", this.ssh, filepath, e);
+            return new Result<List<LsEntry>>().setMessage("파일/디렉토리 조회를 실패하였습니다.. 원인=%s", e.getMessage());
+        });
     }
 
     /**
@@ -325,8 +375,35 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * 
      * @see #progressMonitor
      */
-    public void setProgressMonitor(SftpProgressMonitor progressMonitor) {
+    public void setProgressMonitor(TransferProgressMonitor progressMonitor) {
         this.progressMonitor = progressMonitor;
+    }
+
+    /**
+     * 파일 전송 상황을 갱신한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 19.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param isError
+     *            에러 여부
+     * @param message
+     *            메시지
+     *
+     * @since 2020. 10. 19.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private void updateProgressState(boolean isError, String message) {
+        if (this.progressMonitor == null) {
+            return;
+        }
+
+        this.progressMonitor.setStatus(isError);
+        this.progressMonitor.setMessage(message);
     }
 
     /**
@@ -406,12 +483,17 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 channel.put(source, destination, this.progressMonitor, ChannelSftp.OVERWRITE);
                 return new Result<>(true, true);
             } catch (SftpException e) {
-                throw new JSchException(e.getMessage(), e);
+                updateProgressState(true, String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+
+                logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다. connnection={}, source={}, destination={}", this.ssh, source, destination, e);
+                throw new JSchException("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
             }
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일 업로드를 실패하였습니다. con={}, source={}, destination={}", this.ssh, source, destination, e);
+            updateProgressState(true, String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+
+            logger.error("파일 업로드를 실패하였습니다. connnection={}, source={}, destination={}", this.ssh, source, destination, e);
             return new Result<Boolean>().setMessage("파일 업로드를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }

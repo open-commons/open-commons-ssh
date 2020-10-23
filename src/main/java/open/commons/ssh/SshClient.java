@@ -281,4 +281,22 @@ public abstract class SshClient implements AutoCloseable {
         }
         return channel;
     }
+
+    /**
+     * @since 2020. 10. 19.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("SshClient [ssh=");
+        builder.append(ssh);
+        builder.append(", session=");
+        builder.append(session);
+        builder.append("]");
+        return builder.toString();
+    }
+
 }

@@ -10,6 +10,7 @@
 
 package open.commons.ssh.exec;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -22,6 +23,7 @@ import open.commons.ssh.SshClient;
 import open.commons.ssh.SshConnection;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.text.NamedTemplate;
+import open.commons.utils.ArrayUtils;
 import open.commons.utils.CollectionUtils;
 import open.commons.utils.IOUtils;
 
@@ -76,11 +78,12 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         JSchFunction<ChannelExec, Result<List<String>>> action = channel -> {
             // 조회 명령어 생성/설정
             // grep 실행시 자신의 명령어를 제거하기 위함.
-            if (args.length > 0) {
-                args[0] = String.join("", "[", String.valueOf(args[0].charAt(0)), "]", args[0].substring(1));
+            String[] newArgs = ArrayUtils.copyOf(args, args.length);
+            if (newArgs.length > 0) {
+                newArgs[0] = String.join("", "[", String.valueOf(newArgs[0].charAt(0)), "]", newArgs[0].substring(1));
             }
-            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, args));
-            String command = String.join(" ", toCommand(CMD_LIST_PROCESS_ID, args), " | awk '{print $2}'");
+            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, newArgs));
+            String command = String.join(" ", toCommand(CMD_LIST_PROCESS_ID, newArgs), " | awk '{print $2}'");
             channel.setCommand(command);
             logger.info("command={}", command);
 
@@ -132,11 +135,13 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         JSchFunction<ChannelExec, Result<List<String>>> action = channel -> {
             // 조회 명령어 생성/설정
             // grep 실행시 자신의 명령어를 제거하기 위함.
-            if (args.length > 0) {
-                args[0] = String.join("", "[", String.valueOf(args[0].charAt(0)), "]", args[0].substring(1));
+            String[] newArgs = ArrayUtils.copyOf(args, args.length);
+            if (newArgs.length > 0) {
+                newArgs[0] = String.join("", "[", String.valueOf(newArgs[0].charAt(0)), "]", newArgs[0].substring(1));
             }
-            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, args));
-            String command = toCommand(CMD_LIST_PROCESS, args);
+
+            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, newArgs));
+            String command = toCommand(CMD_LIST_PROCESS, newArgs);
             channel.setCommand(command);
             logger.info("command={}", command);
 
@@ -197,8 +202,14 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
                 channel.connect();
 
                 // skip input stream.
-                while (in.read() != -1)
-                    ;
+                String readline = null;
+                BufferedReader reader = IOUtils.getReader(in);
+
+                while ((readline = reader.readLine()) != null) {
+                    logger.trace("{}", readline);
+                }
+//                while (in.read() != -1)
+//                    ;
                 return new Result<Boolean>(true, true);
             } catch (IOException e) {
                 logger.error("프로세스 실행 중 에러가 발생하였습니다.", e);
