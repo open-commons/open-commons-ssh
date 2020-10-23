@@ -347,8 +347,12 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 channel.ls(filepath, lsResult);
                 return new Result<List<LsEntry>>(lsResult.getEntries(), true);
             } catch (SftpException e) {
-                logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다. connnection={}, filepath={}", this.ssh, filepath, e);
-                throw new JSchException("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
+                if ("No such file".equalsIgnoreCase(e.getMessage())) {
+                    return new Result<List<LsEntry>>(null, true).setMessage("해당 경로가 존재하지 않습니다. 경로=%s", filepath);
+                } else {
+                    logger.error("SFTP 기능 수행 도중 에러가 발생하였습니다. connnection={}, filepath={}", this.ssh, filepath, e);
+                    throw new JSchException("SFTP 기능 수행 도중 에러가 발생하였습니다.", e);
+                }
             }
         };
 
