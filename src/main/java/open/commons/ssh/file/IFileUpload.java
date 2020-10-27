@@ -63,7 +63,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -108,7 +108,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -153,7 +153,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -198,7 +198,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -244,7 +244,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -311,7 +311,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @return
      *
      * @since 2020. 10. 14.
@@ -334,7 +334,7 @@ public interface IFileUpload {
      * @param destination
      *            데이터 저장 경로 (절대경로)
      * @param connectTimeout
-     *            접속대기 제한시간 (단위, ms)
+     *            접속대기 제한시간 (단위: ms)
      * @param charset
      *            문자열 캐릭터 셋
      * @return

@@ -1,3 +1,19 @@
+[2020/10/26]
+- Add
+  + open.commons.ssh.file.IFile
+    - delete(String): 파일 삭제
+    - delete(String, int)
+    - deleteDir(String): 디렉토리 삭제
+    - deleteDir(String, int)
+  
+[2020/10/26]
+- Add
+  + open.commons.ssh.file.IFile
+    - chmodOtcalMode(String, int): 파일 권한 변경
+    - chmodOtcalMode(String, int, int)
+    - mkdirs(String): 상위 디렉토리 생성
+    - mkdirs(String, int)  
+   
 [2020/10/23]
 - Add
   + open.commons.ssh.file.IFile: 파일/디렉토리 관련 기능 제공 

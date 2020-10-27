@@ -93,7 +93,7 @@ public interface ICommandExecutor {
      * 
      * @param connectTimeout
      *            접속대기 제한시간 (단위: ms)
-     * @param condition
+     * @param args
      *
      * @return
      *
@@ -120,7 +120,7 @@ public interface ICommandExecutor {
      * 2020. 10. 15.		박준홍			최초 작성
      * </pre>
      * 
-     * @param condition
+     * @param args
      *
      * @return
      *

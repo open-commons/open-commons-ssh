@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import open.commons.Result;
 import open.commons.ssh.function.JSchFunction;
+import open.commons.ssh.function.SftpFunction;
 import open.commons.utils.IOUtils;
 
 import com.jcraft.jsch.Channel;
@@ -80,9 +81,9 @@ public abstract class SshClient implements AutoCloseable {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.        박준홍         최초 작성
      * </pre>
      *
      * @param <T>
@@ -92,7 +93,7 @@ public abstract class SshClient implements AutoCloseable {
      * @param connectTimeout
      *            접속대기 제한시간 (단위: ms)
      * @param autoConnect
-     *            TODO
+     *            자동 연결 여부
      * @param action
      *            {@link Channel} 생성 후 실행
      * @param onError
@@ -104,6 +105,49 @@ public abstract class SshClient implements AutoCloseable {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, JSchFunction<T, Result<R>> action,
+            Function<Throwable, Result<R>> onError) {
+        T channel = null;
+        try {
+            channel = openChannel(type, connectTimeout, autoConnect);
+            return action.apply(channel);
+        } catch (Throwable e) {
+            return onError.apply(e);
+        } finally {
+            if (channel != null) {
+                channel.disconnect();
+            }
+        }
+    }
+
+    /**
+     * {@link Channel}을 열고 명령을 실행한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 10. 15.        박준홍         최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param <R>
+     * @param type
+     *            {@link Channel} 타입
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위: ms)
+     * @param autoConnect
+     *            자동 연결 여부
+     * @param action
+     *            {@link Channel} 생성 후 실행
+     * @param onError
+     *            에러 발생시 처리 함수
+     * @return
+     * @throws JSchException
+     *
+     * @since 2020. 10. 15.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
         T channel = null;
         try {
