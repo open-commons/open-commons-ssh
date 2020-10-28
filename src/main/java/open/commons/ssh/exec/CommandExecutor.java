@@ -82,7 +82,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             if (newArgs.length > 0) {
                 newArgs[0] = String.join("", "[", String.valueOf(newArgs[0].charAt(0)), "]", newArgs[0].substring(1));
             }
-            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, newArgs));
             String command = String.join(" ", toCommand(CMD_LIST_PROCESS_ID, newArgs), " | awk '{print $2}'");
             channel.setCommand(command);
             logger.info("command={}", command);
@@ -133,15 +132,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         logger.debug("connect-timeout={}, arguments={}", connectTimeout, Arrays.toString(args));
 
         JSchFunction<ChannelExec, Result<List<String>>> action = channel -> {
-            // 조회 명령어 생성/설정
-            // grep 실행시 자신의 명령어를 제거하기 위함.
-            String[] newArgs = ArrayUtils.copyOf(args, args.length);
-            if (newArgs.length > 0) {
-                newArgs[0] = String.join("", "[", String.valueOf(newArgs[0].charAt(0)), "]", newArgs[0].substring(1));
-            }
-
-            // String command = toCommand(ArrayUtils.merge(LIST_PROCESS, newArgs));
-            String command = toCommand(CMD_LIST_PROCESS, newArgs);
+            String command = toCommand(CMD_LIST_PROCESS, args);
             channel.setCommand(command);
             logger.info("command={}", command);
 
@@ -285,7 +276,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
         JSchFunction<ChannelExec, Result<List<String>>> action = channel -> {
             // 명령어 생성/설정
-            // String command = toCommand(ArrayUtils.merge(STOP_PROCESS_KILL, pids, EXEC_AS_BACKGROUD));
             String command = toCommand(CMD_STOP_PROCESS, pids);
             channel.setCommand(command);
             logger.info("command={}", command);

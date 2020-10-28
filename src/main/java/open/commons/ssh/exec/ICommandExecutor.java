@@ -27,7 +27,7 @@ public interface ICommandExecutor {
      * PID 목록을 제공한다.<br>
      * 
      * <pre>
-     * ps aux | grep <args> | awk '{print $2}'
+     * ps aux | grep &lt;args&gt; | awk '{print $2}'
      * </pre>
      * 
      * <pre>
@@ -52,7 +52,7 @@ public interface ICommandExecutor {
      * PID 목록을 제공한다.<br>
      * 
      * <pre>
-     * ps aux | grep <args> | awk '{print $2}'
+     * ps aux | grep &lt;args&gt; | awk '{print $2}'
      * </pre>
      * 
      * <pre>
@@ -79,7 +79,7 @@ public interface ICommandExecutor {
      * 검색 명령어 패턴
      * 
      * <pre>
-     * ps -aef | grep <args>
+     * ps -aef | grep &lt;args&gt;
      * </pre>
      * 
      * <br>
@@ -108,7 +108,7 @@ public interface ICommandExecutor {
      * 검색 명령어 패턴
      * 
      * <pre>
-     * ps -aef | grep <args>
+     * ps -aef | grep &lt;args&gt;
      * </pre>
      * 
      * <br>
