@@ -25,7 +25,7 @@
 		<org.apache.logging.log4j-core.version>[2.13.2]</org.apache.logging.log4j-core.version>
 		<org.apache.logging.log4j-api.version>[2.13.2]</org.apache.logging.log4j-api.version>
 
-		<open-commons-core.version>1.7.0-SNAPSHOT</open-commons-core.version>
+		<open-commons-core.version>1.8.0-SNAPSHOT</open-commons-core.version>
 
 		<jsh.version>0.1.55</jsh.version>
 		<jsch-ex.version>0.1.55.1</jsch-ex.version>
