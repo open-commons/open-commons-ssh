@@ -50,6 +50,8 @@ import open.commons.ssh.SshClient;
 import open.commons.ssh.SshConnection;
 import open.commons.ssh.function.SftpFunction;
 import open.commons.utils.ExceptionUtils;
+import open.commons.utils.IOUtils;
+import open.commons.utils.NumberUtils;
 
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.ChannelSftp.LsEntry;
@@ -119,9 +121,11 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            updateProgressState(true, String.format("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s", this.ssh, filepath, permission));
+            updateProgressState(true,
+                    String.format("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, connect-timeout=%,d", this.ssh, filepath, permission, connectTimeout));
 
-            logger.error("파일/디렉토리 권한 설정을 실패하였습니다. connection={}, filepath={}, mod={}", this.ssh, filepath, permission, e);
+            logger.error("파일/디렉토리 권한 설정을 실패하였습니다. connection={}, filepath={}, mod={}, connect-timeout={}", this.ssh, filepath, permission,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<LsEntry>().setMessage("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, 원인=%s", this.ssh, filepath, permission, e.getMessage());
         });
     }
@@ -186,7 +190,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일 삭제를 실패하였습니다. connection={}, filepath={}", this.ssh, filepath, e);
+            logger.error("파일 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<Boolean>().setMessage("파일 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh, filepath, e.getMessage());
         });
     }
@@ -224,7 +228,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("디렉토리 삭제를 실패하였습니다. connection={}, filepath={}", this.ssh, filepath, e);
+            logger.error("디렉토리 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<Boolean>().setMessage("디렉토리 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh, filepath, e.getMessage());
         });
     }
@@ -299,13 +303,18 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 return new Result<>(true, true);
             } catch (SftpException e) {
                 throw e;
+            } finally {
+                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(fafanmama_at_naver_com)
+                IOUtils.close(destination);
             }
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            updateProgressState(true, String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+            updateProgressState(true,
+                    String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d", this.ssh, source, destination, connectTimeout));
 
-            logger.error("파일 다운로드를 실패하였습니다. connection={}, source={}, destination={}", this.ssh, source, destination, e);
+            logger.error("파일 다운로드를 실패하였습니다. connection={}, source={}, destination={}, connect-timeout={}", this.ssh, source, destination,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<Boolean>().setMessage("파일 다운로드를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
@@ -471,8 +480,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일/디렉토리 조회를 실패하였습니다. connection={}, filepath={}", this.ssh, filepath, e);
-            return new Result<List<LsEntry>>().setMessage("파일/디렉토리 조회를 실패하였습니다.. 원인=%s", e.getMessage());
+            logger.error("파일/디렉토리 조회를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<List<LsEntry>>().setMessage("파일/디렉토리 조회를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
 
@@ -516,8 +525,9 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("디렉토리 생성 도중 에러가 발생하였습니다. connnection={}, directory={}", this.ssh, directory, e);
-            return new Result<Boolean>().setMessage("디렉토리 생성 도중 에러가 발생하였습니다. connection=%s, directory=%s, 원인=%s", this.ssh, directory, e.getMessage());
+            logger.error("디렉토리 생성 도중 에러가 발생하였습니다. connnection={}, directory={}, connect-timeout={}", this.ssh, directory, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("디렉토리 생성 도중 에러가 발생하였습니다. connection=%s, directory=%s, connect-timeout=%,d, 원인=%s", this.ssh, directory, connectTimeout,
+                    e.getMessage());
         });
     }
 
@@ -611,7 +621,6 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      */
     @Override
     public Result<Boolean> upload(File source, String destination, int connectTimeout) throws IOException {
-
         return upload(Files.newInputStream(Paths.get(source.toURI()), StandardOpenOption.READ), destination, connectTimeout);
     }
 
@@ -636,7 +645,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     public Result<Boolean> upload(InputStream source, String destination, int connectTimeout) {
         // 절대 경로 확인
         if (!destination.startsWith("/")) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 저장경로는 절대경로('/'로 시작)이어야 합니다. destination=", destination);
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 저장경로는 절대경로('/'로 시작)이어야 합니다. destination=%s", destination);
         }
 
         SftpFunction<ChannelSftp, Result<Boolean>> action = channel -> {
@@ -647,14 +656,20 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 return new Result<>(true, true);
             } catch (SftpException e) {
                 throw e;
+            } finally {
+                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(fafanmama_at_naver_com)
+                IOUtils.close(source);
             }
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            updateProgressState(true, String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s", this.ssh, source, destination));
+            updateProgressState(true,
+                    String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d", this.ssh, source, destination, connectTimeout));
 
-            logger.error("파일 업로드를 실패하였습니다. connnection={}, source={}, destination={}", this.ssh, source, destination, e);
-            return new Result<Boolean>().setMessage("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, 원인=%s", this.ssh, source, destination, e.getMessage());
+            logger.error("파일 업로드를 실패하였습니다. connnection={}, source={}, destination={}, connect-timeout={}", this.ssh, source, destination,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d, 원인=%s", this.ssh, source, destination,
+                    connectTimeout, e.getMessage());
         });
     }
 

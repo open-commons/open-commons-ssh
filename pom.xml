@@ -249,41 +249,6 @@
 				</executions>
 			</plugin>
 			<!-- <<< end: javadoc -->
-
-			<!-- <plugin> -->
-			<!-- <artifactId>maven-antrun-plugin</artifactId> -->
-			<!-- <version>${java.version}</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <phase>compile</phase> -->
-			<!-- <configuration> -->
-			<!-- <target> -->
-			<!-- <ant antfile="${basedir}/build.xml"> -->
-			<!-- <target name="deploy" /> -->
-			<!-- </ant> -->
-			<!-- </target> -->
-			<!-- </configuration> -->
-			<!-- <goals> -->
-			<!-- <goal>run</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-
-			<!-- <dependencies> -->
-			<!-- <dependency> -->
-			<!-- <groupId>ant-contrib</groupId> -->
-			<!-- <artifactId>ant-contrib</artifactId> -->
-			<!-- <version>1.0b3</version> -->
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>ant</groupId> -->
-			<!-- <artifactId>ant</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
-			<!-- </dependency> -->
-			<!-- </dependencies> -->
-			<!-- </plugin> -->
-
 		</plugins>
 	</build>
 </project>
