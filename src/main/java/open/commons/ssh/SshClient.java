@@ -334,7 +334,7 @@ public abstract class SshClient implements AutoCloseable {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean autoConnect) throws JSchException {
-        Session session = getSession(true, DEFAULT_CONNECT_TIMEOUT);
+        Session session = getSession(autoConnect, connectTimeout);
         T channel = this.ssh.openChannel(session, type);
         if (autoConnect) {
             channel.connect(connectTimeout);
