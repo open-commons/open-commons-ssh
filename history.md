@@ -1,3 +1,8 @@
+[2020/11/26]
+- New
+  + open.commons.ssh.IConnectionInfo
+  + open.commons.ssh.ConnectionInfo
+
 [2020/10/26]
 - Add
   + open.commons.ssh.file.IFile
