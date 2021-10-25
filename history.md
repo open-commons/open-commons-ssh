@@ -1,3 +1,11 @@
+[2021/10/25]
+- Bugfix
+  + open.commons.exec.CommandExecutor 
+    + listPids(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 true로 변경
+    + listProcesses(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 true로 변경
+    + startProcess(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 true로 변경
+    + stopProcesses(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 true로 변경
+
 [2020/11/26]
 - New
   + open.commons.ssh.IConnectionInfo
