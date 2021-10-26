@@ -234,7 +234,7 @@ public abstract class SshClient implements AutoCloseable {
      * </pre>
      * 
      * @param autoConnect
-     *            대상 서버 자동 연결 여부
+     *            대상 서버와의 Session 자동 연결 여부
      * @param connectTimeout
      *            서버연결 대기시간 (단위: ms)
      *
@@ -325,18 +325,18 @@ public abstract class SshClient implements AutoCloseable {
      *            {@link Channel} 타입.
      * @param connectTimeout
      *            접속대기 제한 시간 (단위: ms)
-     * @param autoConnect
-     *            TODO
+     * @param channelAutoConnect
+     *            Channel 자동 연결 여부
      * @return
      * @throws JSchException
      *
      * @since 2020. 10. 15.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean autoConnect) throws JSchException {
-        Session session = getSession(autoConnect, connectTimeout);
+    protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
+        Session session = getSession(true, connectTimeout);
         T channel = this.ssh.openChannel(session, type);
-        if (autoConnect) {
+        if (channelAutoConnect) {
             channel.connect(connectTimeout);
         }
         return channel;

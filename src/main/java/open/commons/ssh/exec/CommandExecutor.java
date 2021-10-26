@@ -105,7 +105,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             // 데이터 조회 Stream 연결
             channel.setInputStream(null);
             try (InputStream in = channel.getInputStream();) {
-                channel.connect();
+                channel.connect(connectTimeout);
                 List<String> pids = IOUtils.readLines(in);
 
                 pids.forEach(pid -> {
@@ -119,7 +119,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             }
         };
 
-        return executeOnChannel(ChannelType.EXEC, connectTimeout, true, action, e -> {
+        return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
             logger.error("프로세스 목록 조회를 실패하였습니다. connection={}, arguments={}", this.ssh, Arrays.toString(args), e);
             return new Result<List<String>>().setMessage("프로세스 목록 조회를 실패하였습니다. 원인=%s", e.getMessage());
         });
@@ -155,7 +155,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             // 데이터 조회 Stream 연결
             channel.setInputStream(null);
             try (InputStream in = channel.getInputStream();) {
-                channel.connect();
+                channel.connect(connectTimeout);
                 List<String> cmdlist = IOUtils.readLines(in);
 
                 cmdlist.forEach(cmd -> {
@@ -169,7 +169,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             }
         };
 
-        return executeOnChannel(ChannelType.EXEC, connectTimeout, true, action, e -> {
+        return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
             logger.error("프로세스 목록 조회를 실패하였습니다. connection={}, arguments={}", this.ssh, Arrays.toString(args), e);
             return new Result<List<String>>().setMessage("프로세스 목록 조회를 실패하였습니다. 원인=%s", e.getMessage());
         });
@@ -206,7 +206,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             // 명령어 실행
             channel.setInputStream(null);
             try (InputStream in = channel.getInputStream();) {
-                channel.connect();
+                channel.connect(connectTimeout);
 
                 // skip input stream.
                 String readline = null;
@@ -224,7 +224,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             }
         };
 
-        return executeOnChannel(ChannelType.EXEC, connectTimeout, true, action, e -> {
+        return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
             logger.error("프로세스 실행을 실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout, Arrays.toString(cmds), e);
             return new Result<Boolean>().setMessage("프로세스 실행을 실패하였습니다. 원인=%s", e.getMessage());
         });
@@ -299,7 +299,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             // 명령어 실행
             channel.setInputStream(null);
             try (InputStream in = channel.getInputStream();) {
-                channel.connect();
+                channel.connect(connectTimeout);
                 List<String> resultStop = IOUtils.readLines(in);
 
                 resultStop.forEach(result -> {
@@ -313,7 +313,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
             }
         };
 
-        return executeOnChannel(ChannelType.EXEC, connectTimeout, true, action, e -> {
+        return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
             logger.error("프로세스 종료를  실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout, Arrays.toString(pids), e);
             return new Result<List<String>>().setMessage("프로세스 종료를 실패하였습니다. 원인=%s", e.getMessage());
         });

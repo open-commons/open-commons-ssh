@@ -1,3 +1,13 @@
+[2021/10/26]
+- Bugfix
+  + open.commons.exec.CommandExecutor 
+    + listPids(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 false로 복구
+    + listProcesses(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 false로 복구
+    + startProcess(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 false로 복구
+    + stopProcesses(int, String...): executeOnChannel(ChannelType, int, boolean, JSchFunction&lt;T, Result&lt;R&gt;&gt;, Function&lt;Throwable, Result&lt;R&gt;&gt;) 의 autoConnect 값을 false로 복구
+  + open.commons.ssh.SshClient
+    + openChannel(ChannelType, int, boolean): 내부에서 getSession(boolean, int) 호출 할 때 'autoConnect'값을 true로 고정.
+
 [2021/10/25]
 - Bugfix
   + open.commons.exec.CommandExecutor 
