@@ -1,15 +1,44 @@
 [2021/10/28]
 - Add
   + open.commons.ssh.file.IFIle
-    + rm(String): 파일 삭제
-    + rm(String, int): 파일 삭제
-    + rmdir(String): 디렉토리 삭제
-    + rmdir(String, int): 디렉토리 삭제
+    + copy(String, String): 복사
+    + copy(String, String, boolean): 복사
+    + copy(String, String, int): 복사
+    + copy(String, String, int, boolean): 복사
+    + getFileType(String): 파일 유형 제공
+    + getFileType(String, int): 파일 유형 제공
+    + isDirectory(String): 디렉토리 여부
+    + isDirectory(String, int): 디렉토리 여부
+    + isFile(String): 파일 여부
+    + isFile(String, int): 파일 여부
+    + move(String, String): 이동
+    + move(String, String, boolean): 이동
+    + move(String, String, int): 이동
+    + move(String, String, int, boolean): 이동
+    + rm(String): 삭제
+    + rm(String, int):  삭제
+    + <strike>rmdir(String): 디렉토리 삭제
+    + rmdir(String, int): 디렉토리 삭제</strike>
   + open.commons.ssh.file.FileTransfer
-    + rm(String): 파일 삭제
-    + rm(String, int): 파일 삭제
-    + rmdir(String): 디렉토리 삭제
-    + rmdir(String, int): 디렉토리 삭제
+    + copy(String, String): 복사
+    + copy(String, String, boolean): 복사
+    + copy(String, String, int): 복사
+    + copy(String, String, int, boolean): 복사
+    + getFileType(String): 파일 유형 제공
+    + getFileType(String, int): 파일 유형 제공    
+    + isDirectory(String): 디렉토리 여부
+    + isDirectory(String, int): 디렉토리 여부
+    + isFile(String): 파일 여부
+    + isFile(String, int): 파일 여부    
+    + move(String, String): 이동
+    + move(String, String, boolean): 이동
+    + move(String, String, int): 이동
+    + move(String, String, int, boolean): 이동  
+    + rm(String): 삭제
+    + rm(String, int): 삭제
+    + <strike>rmdir(String): 삭제
+    + rmdir(String, int): 삭제</strike>
+  + open.commond.ssh.file.FIleType: 파일 유형
 
 [2021/10/26]
 - Bugfix
