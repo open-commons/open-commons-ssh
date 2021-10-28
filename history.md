@@ -1,3 +1,16 @@
+[2021/10/28]
+- Add
+  + open.commons.ssh.file.IFIle
+    + rm(String): 파일 삭제
+    + rm(String, int): 파일 삭제
+    + rmdir(String): 디렉토리 삭제
+    + rmdir(String, int): 디렉토리 삭제
+  + open.commons.ssh.file.FileTransfer
+    + rm(String): 파일 삭제
+    + rm(String, int): 파일 삭제
+    + rmdir(String): 디렉토리 삭제
+    + rmdir(String, int): 디렉토리 삭제
+
 [2021/10/26]
 - Bugfix
   + open.commons.exec.CommandExecutor 

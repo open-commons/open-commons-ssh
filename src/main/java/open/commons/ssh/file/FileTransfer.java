@@ -532,6 +532,83 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     }
 
     /**
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#rm(java.lang.String)
+     */
+    @Override
+    public Result<Boolean> rm(@NotEmpty String filepath) {
+        return rm(filepath, DEFAULT_CONNECT_TIMEOUT);
+    }
+
+    /**
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#rm(java.lang.String, int)
+     */
+    @Override
+    public Result<Boolean> rm(@NotEmpty String filepath, @Min(1) int connectTimeout) {
+        SftpFunction<ChannelSftp, Result<Boolean>> action = channel -> {
+            try {
+                channel.rm(filepath);
+                return new Result<>(true, true);
+            } catch (SftpException e) {
+                throw e;
+            }
+        };
+
+        return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
+            logger.error("디렉토리 삭제 도중 에러가 발생하였습니다. connnection={}, directory={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("디렉토리 삭제 도중 에러가 발생하였습니다. connection=%s, directory=%s, connect-timeout=%,d, 원인=%s", this.ssh, filepath, connectTimeout,
+                    e.getMessage());
+        });
+    }
+
+    /**
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#rmdir(java.lang.String)
+     */
+    @Override
+    public Result<Boolean> rmdir(@NotEmpty String dirpath) {
+        return rmdir(dirpath, DEFAULT_CONNECT_TIMEOUT);
+    }
+
+    /**
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see open.commons.ssh.file.IFile#rmdir(java.lang.String, int)
+     */
+    @Override
+    public Result<Boolean> rmdir(@NotEmpty String dirpath, @Min(1) int connectTimeout) {
+
+        SftpFunction<ChannelSftp, Result<Boolean>> action = channel -> {
+            try {
+                channel.rmdir(dirpath);
+                return new Result<>(true, true);
+            } catch (SftpException e) {
+                throw e;
+            }
+        };
+
+        return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
+            logger.error("디렉토리 삭제 도중 에러가 발생하였습니다. connnection={}, directory={}, connect-timeout={}", this.ssh, dirpath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("디렉토리 삭제 도중 에러가 발생하였습니다. connection=%s, directory=%s, connect-timeout=%,d, 원인=%s", this.ssh, dirpath, connectTimeout,
+                    e.getMessage());
+        });
+    }
+
+    /**
      * <br>
      * 
      * <pre>

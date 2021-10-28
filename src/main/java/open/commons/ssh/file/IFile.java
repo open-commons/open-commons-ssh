@@ -220,6 +220,7 @@ public interface IFile {
      * </pre>
      *
      * @param directory
+     *            디렉토리 경로
      * @return
      *
      * @since 2020. 10. 26.
@@ -238,12 +239,98 @@ public interface IFile {
      * </pre>
      *
      * @param directory
+     *            디렉토리 경로
      * @param connectTimeout
+     *            접속대기 제한시간. (단위: ms)
      * @return
      *
      * @since 2020. 10. 26.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public Result<Boolean> mkdirs(@NotNull @NotEmpty String directory, @Min(1) int connectTimeout);
+
+    /**
+     * 파일을 삭제한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param filepath
+     *            파일 경로
+     * @return
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public Result<Boolean> rm(@NotEmpty String filepath);
+
+    /**
+     * 파일을 삭제한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param filepath
+     *            파일 경로
+     * @param connectTimeout
+     *            접속대기 제한시간. (단위: ms)
+     * @return
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public Result<Boolean> rm(@NotEmpty String filepath, @Min(1) int connectTimeout);
+
+    /**
+     * 디렉토리를 삭제한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param dirpath
+     *            디렉토리 경로
+     * @return
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public Result<Boolean> rmdir(@NotEmpty String dirpath);
+
+    /**
+     * 디렉토리를 삭제한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param dirpath
+     *            디렉토리 경로
+     * @param connectTimeout
+     *            접속대기 제한시간. (단위: ms)
+     * @return
+     *
+     * @since 2021. 10. 28.
+     * @version 0.2.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public Result<Boolean> rmdir(@NotEmpty String dirpath, @Min(1) int connectTimeout);
 
 }
