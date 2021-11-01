@@ -52,8 +52,10 @@ import open.commons.ssh.SshConnection;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.ssh.function.SftpFunction;
 import open.commons.utils.ExceptionUtils;
+import open.commons.utils.FileUtils;
 import open.commons.utils.IOUtils;
 import open.commons.utils.NumberUtils;
+import open.commons.utils.StringUtils;
 
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
@@ -121,17 +123,31 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     private Result<Boolean> changeLocation(@NotEmpty String source, @NotEmpty String destination, @Min(1) int connectTimeout, boolean overwrite, final boolean isCopy) {
+
         // #1. source 파일 존재 여부 검증
-        Result<FileType> resultSrcFileType = getFileType(source, connectTimeout);
-        FileType srcFileType = resultSrcFileType.getData();
-        if (resultSrcFileType.isError() || (FileType.REGULAR_FILE != srcFileType && FileType.DIRECTORY != srcFileType)) {
-            return Result.error("파일유형=%s, 원인=%s", srcFileType, resultSrcFileType.getMessage());
+        // #1-1. source 데이터의 마지막 경로에 wildcard(*)가 포함된 경우 처리
+        String lastpath = FileUtils.getFileName(source);
+        if (StringUtils.isNullOrEmptyString(lastpath)) {
+            return Result.error("%s할 파일/디렉토리 정보(%s)가 올바르지 않습니다.", isCopy ? "복사" : "이동", source);
+        }
+
+        FileType srcFileType = null;
+        if (lastpath.contains("*")) {
+            srcFileType = FileType.WILDCARD;
+        } else
+        // #1-2. 일반적인 파일 경로 검증.
+        {
+            Result<FileType> resultSrcFileType = getFileType(source, connectTimeout);
+            srcFileType = resultSrcFileType.getData();
+            if (resultSrcFileType.isError() || (srcFileType != FileType.REGULAR_FILE && srcFileType != FileType.DIRECTORY)) {
+                return Result.error("파일유형=%s, 원인=%s", srcFileType, resultSrcFileType.getMessage());
+            }
         }
 
         // #2. destination 타입 확인
         Result<FileType> resultDstFileType = getFileType(destination, connectTimeout);
         FileType dstFileType = resultDstFileType.getData();
-        if (resultDstFileType.isError() || (FileType.REGULAR_FILE != dstFileType && FileType.DIRECTORY != dstFileType)) {
+        if (resultDstFileType.isError() || (dstFileType != FileType.REGULAR_FILE && dstFileType != FileType.DIRECTORY)) {
             return Result.error("파일유형=%s, 원인=%s", dstFileType, resultDstFileType.getMessage());
         }
 
@@ -140,14 +156,14 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         bufCmd.add("-v");
 
         // #3. source가 디렉토리인 경우
-        if (FileType.DIRECTORY == srcFileType) {
+        if (srcFileType == FileType.DIRECTORY || srcFileType == FileType.WILDCARD) {
             // destination의 경로가 '파일'인 경우 불가.
-            if (FileType.REGULAR_FILE == dstFileType) {
+            if (dstFileType == FileType.REGULAR_FILE) {
                 return Result.error("디렉토리(%s)를 파일(%s)로 위치를 변경할 수는 없습니다.", source, destination);
             }
 
             if (isCopy) {
-                // 복사할 대상이 디렉토리이기 때문에
+                // 복사할 대상이 디렉토리/여러 개이기 때문에
                 bufCmd.add("-r");
             }
         }
@@ -814,31 +830,47 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     @Override
     public Result<Boolean> rm(@NotEmpty String pathname, @Min(1) @Min(1) int connectTimeout) {
 
-        Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
-        if (resultFileType.isError()) {
-            return Result.error(resultFileType.getMessage());
+        // #1. source 파일 존재 여부 검증
+        // #1-1. source 데이터의 마지막 경로에 wildcard(*)가 포함된 경우 처리
+        String lastpath = FileUtils.getFileName(pathname);
+        if (StringUtils.isNullOrEmptyString(lastpath)) {
+            return Result.error("삭제할 파일/디렉토리 정보(%s)가 올바르지 않습니다.", pathname);
         }
 
-        final FileType fileType = resultFileType.getData();
-        // 존재하지 않는 경우
-        if (FileType.NULL == fileType) {
-            return Result.success(true).setMessage("%s이 존재하지 않습니다.", pathname);
-        } else if (FileType.DIRECTORY != fileType && FileType.REGULAR_FILE != fileType) {
-            return Result.error("%s(%s)이 파일 또는 디렉토리가 아닙니다.", pathname, fileType.getCode());
+        FileType fileType = null;
+        if (lastpath.contains("*")) {
+            fileType = FileType.WILDCARD;
+        } else
+        // #1-2. 일반적인 파일 경로 검증.
+        {
+            Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
+            if (resultFileType.isError()) {
+                return Result.error(resultFileType.getMessage());
+            }
+            fileType = resultFileType.getData();
+        }
+
+        // 명령어 생성/설정
+        ArrayList<String> bufCmd = new ArrayList<>();
+        switch (fileType) {
+            // 존재하지 않는 경우
+            case NULL:
+                return Result.success(true).setMessage("%s이 존재하지 않습니다.", pathname);
+            case WILDCARD:
+            case DIRECTORY:
+                bufCmd.add(" -r");
+            case REGULAR_FILE:
+                bufCmd.add("-v");
+                bufCmd.add(pathname);
+                bufCmd.add(0, "rm");
+                break;
+            default:
+                return Result.error("%s (%s)이 파일 또는 디렉토리가 아닙니다.", pathname, fileType.getCode());
+
         }
 
         JSchFunction<ChannelExec, Result<Boolean>> action = channel -> {
-            // 명령어 생성/설정
-            StringBuffer bufCmd = new StringBuffer();
-            bufCmd.append("rm");
-            bufCmd.append(" -v");
-            if (FileType.DIRECTORY == fileType) {
-                bufCmd.append(" -r");
-            }
-            bufCmd.append(" ");
-            bufCmd.append(pathname);
-
-            String command = bufCmd.toString();
+            String command = String.join(" ", bufCmd.toArray(new String[0]));
             channel.setCommand(command);
             logger.info("command={}", command);
 
@@ -858,9 +890,11 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
             }
         };
 
+        final boolean isFile = FileType.REGULAR_FILE == fileType;
+
         return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
-            String errMsg = String.format("%s(%s) 삭제 도중 에러가 발생하였습니다. connnection=%s, connect-timeout=%s, 원인=%s", FileType.REGULAR_FILE == fileType ? "파일" : "디렉토리", pathname,
-                    this.ssh, NumberUtils.INT_TO_STR.apply(connectTimeout), e.getMessage());
+            String errMsg = String.format("%s(%s) 삭제 도중 에러가 발생하였습니다. connnection=%s, connect-timeout=%s, 원인=%s", isFile ? "파일" : "디렉토리", pathname, this.ssh,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e.getMessage());
             logger.error(errMsg, e);
             return new Result<Boolean>().setMessage(errMsg);
         });

@@ -1,4 +1,10 @@
 [2021/10/28]
+- Update
+  + open.commons.ssh.file.FileTransfer
+    + changeLocation(String, String, int, boolean, boolean)
+    + rm(String, int)
+
+[2021/10/28]
 - Add
   + open.commons.ssh.file.IFIle
     + copy(String, String): 복사

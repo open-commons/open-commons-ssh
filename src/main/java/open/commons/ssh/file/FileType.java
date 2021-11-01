@@ -52,6 +52,8 @@ public enum FileType {
     SYMBOLIC_LINK("S_IFLNK", 0xa000), //
     SOCKET("S_IFSOCK", 0xc000), //
     NULL("NULL", 0x0000), //
+    /** 마지막 경로 정보에 wildcard(*)가 포함된 경우. */
+    WILDCARD("WILDCARD", -0x0001), //
     ;
 
     private String code;
