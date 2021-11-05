@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 23. 오후 4:53:35
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -42,7 +42,7 @@ import com.jcraft.jsch.ChannelSftp.LsEntry;
  * 
  * @since 2020. 10. 23.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IFile {
 
@@ -63,7 +63,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<LsEntry> chmodOtcalMode(@NotNull @NotEmpty String filepath, int permission);
 
@@ -86,7 +86,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<LsEntry> chmodOtcalMode(@NotNull @NotEmpty String filepath, int permission, @Min(1) int connectTimeout);
 
@@ -109,7 +109,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination) throws IOException;
 
@@ -134,7 +134,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, boolean overwrite) throws IOException;
 
@@ -159,7 +159,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, int connectTimeout) throws IOException;
 
@@ -186,7 +186,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, int connectTimeout, boolean overwrite) throws IOException;
 
@@ -205,7 +205,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@NotNull @NotEmpty String filepath);
 
@@ -226,7 +226,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
 
@@ -245,7 +245,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> deleteDir(@NotNull @NotEmpty String filepath);
 
@@ -266,7 +266,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> deleteDir(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
 
@@ -286,7 +286,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<FileType> getFileType(@NotEmpty String pathname);
 
@@ -308,7 +308,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<FileType> getFileType(@NotEmpty String pathname, @Min(1) int connectTimeout);
 
@@ -328,7 +328,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isDirectory(@NotEmpty String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -357,7 +357,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isDirectory(@NotEmpty String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -384,7 +384,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isFile(@NotEmpty String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -413,7 +413,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isFile(@NotEmpty String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -440,7 +440,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSocket(@NotEmpty String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -469,7 +469,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSocket(@NotEmpty String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -496,7 +496,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSymbolicLink(@NotEmpty String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -525,7 +525,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSymbolicLink(@NotEmpty String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -551,7 +551,7 @@ public interface IFile {
      * @return 해당 경로가 존재하지 않는 경우 빈 목록을 제공.
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath);
 
@@ -572,7 +572,7 @@ public interface IFile {
      * @return 해당 경로가 존재하지 않는 경우 빈 목록을 제공.
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
 
@@ -591,7 +591,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> mkdirs(@NotNull @NotEmpty String directory);
 
@@ -612,7 +612,7 @@ public interface IFile {
      * @return
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> mkdirs(@NotNull @NotEmpty String directory, @Min(1) int connectTimeout);
 
@@ -635,7 +635,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination) throws IOException;
 
@@ -660,7 +660,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, boolean overwrite) throws IOException;
 
@@ -685,7 +685,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, int connectTimeout) throws IOException;
 
@@ -712,7 +712,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, int connectTimeout, boolean overwrite) throws IOException;
 
@@ -732,7 +732,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> rm(@NotEmpty String filepath);
 
@@ -754,7 +754,7 @@ public interface IFile {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> rm(@NotEmpty String filepath, @Min(1) int connectTimeout);
 

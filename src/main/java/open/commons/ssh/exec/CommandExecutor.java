@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 15. 오후 2:57:07
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -50,7 +50,7 @@ import com.jcraft.jsch.JSchException;
  * 
  * @since 2020. 10. 15.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class CommandExecutor extends SshClient implements ICommandExecutor {
     /** 프로세스 실행을 위한 명령어 */
@@ -83,7 +83,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(int, java.lang.String[])
      */
@@ -127,7 +127,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(java.lang.String[])
      */
@@ -138,7 +138,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(int, java.lang.String[])
      */
@@ -177,7 +177,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(java.lang.String[])
      */
@@ -188,7 +188,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, java.lang.String[])
      */
@@ -232,7 +232,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier, java.lang.String[])
      */
@@ -259,7 +259,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(java.lang.String[])
      */
@@ -270,7 +270,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(Supplier, java.lang.String[])
      */
@@ -281,7 +281,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(int, String...)
      */
@@ -321,7 +321,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(String...)
      */
@@ -346,7 +346,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private String toCommand(String cmdTpl, String... args) {
         String argStr = String.join(" ", args);

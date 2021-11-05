@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 4:27:17
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -36,7 +36,7 @@ import com.jcraft.jsch.UserInfo;
  * 
  * @since 2020. 10. 14.
  * @version 0.1.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SshUserInfo implements UserInfo {
     private final Logger logger;
@@ -93,7 +93,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#getPassphrase()
      */
@@ -104,7 +104,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#getPassword()
      */
@@ -115,7 +115,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptPassphrase(java.lang.String)
      */
@@ -127,7 +127,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptPassword(java.lang.String)
      */
@@ -139,7 +139,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptYesNo(java.lang.String)
      */
@@ -151,7 +151,7 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#showMessage(java.lang.String)
      */

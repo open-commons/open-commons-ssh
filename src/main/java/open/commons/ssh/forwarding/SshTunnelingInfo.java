@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 3:52:52
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -43,7 +43,7 @@ import open.commons.ssh.utils.SessionUtils;
  * 
  * @since 2020. 10. 14.
  * @version 0.1.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SshTunnelingInfo {
     /** SSH Server 사용자 */
@@ -106,7 +106,7 @@ public class SshTunnelingInfo {
      * @param remote
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void addRemotePortForwarding(RemotePortForwarding remote) {
         if (remote == null) {
@@ -133,7 +133,7 @@ public class SshTunnelingInfo {
      * @param remotes
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void addRemotePortForwardings(Collection<RemotePortForwarding> remotes) {
         if (remotes == null) {
@@ -160,7 +160,7 @@ public class SshTunnelingInfo {
      * @param remotes
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void addRemotePortForwardings(RemotePortForwarding... remotes) {
         if (remotes == null) {
@@ -204,7 +204,7 @@ public class SshTunnelingInfo {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getId() {
         return SessionUtils.GENERATE_SESSION_KEY.apply(this.username, this.host, this.port);

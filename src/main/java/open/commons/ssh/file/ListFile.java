@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 23. 오후 5:14:35
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -37,7 +37,7 @@ import com.jcraft.jsch.ChannelSftp.LsEntrySelector;
  * 
  * @since 2020. 10. 23.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class ListFile implements LsEntrySelector {
 
@@ -71,7 +71,7 @@ public class ListFile implements LsEntrySelector {
      * @return
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public List<LsEntry> getEntries() {
         return new ArrayList<>(this.list.values());
@@ -90,7 +90,7 @@ public class ListFile implements LsEntrySelector {
      * @return
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public List<String> getFiles() {
         return new ArrayList<String>(this.list.keySet());
@@ -98,7 +98,7 @@ public class ListFile implements LsEntrySelector {
 
     /**
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.ChannelSftp.LsEntrySelector#select(com.jcraft.jsch.ChannelSftp.LsEntry)
      */

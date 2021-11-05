@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 5:53:40
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -69,7 +69,7 @@ import com.jcraft.jsch.SftpException;
  * 
  * @since 2020. 10. 14.
  * @version 0.1.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class FileTransfer extends SshClient implements IFileUpload, IFileDownload, IFile {
 
@@ -120,7 +120,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private Result<Boolean> changeLocation(@NotEmpty String source, @NotEmpty String destination, @Min(1) int connectTimeout, boolean overwrite, final boolean isCopy) {
 
@@ -210,7 +210,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int)
      */
@@ -221,7 +221,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int, int)
      */
@@ -254,7 +254,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String)
      * @see #copy(String, String, int, boolean)
@@ -268,7 +268,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, boolean)
      * @see #copy(String, String, int, boolean)
@@ -282,7 +282,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int)
      * @see #copy(String, String, int, boolean)
@@ -296,7 +296,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int, boolean)
      */
@@ -321,7 +321,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @param filepath
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws SftpException
      */
     private void createParentIfNotExist(ChannelSftp sftp, String filepath) throws SftpException {
@@ -335,7 +335,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#delete(java.lang.String)
      */
@@ -346,7 +346,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#delete(java.lang.String, int)
      */
@@ -373,7 +373,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#deleteDir(java.lang.String)
      */
@@ -384,7 +384,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#deleteDir(java.lang.String, int)
      */
@@ -411,7 +411,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File)
      */
@@ -422,7 +422,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, boolean)
      */
@@ -433,7 +433,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int)
      */
@@ -444,7 +444,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int, boolean)
      */
@@ -455,7 +455,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream)
      */
@@ -466,7 +466,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, int)
      */
@@ -480,7 +480,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
             } catch (SftpException e) {
                 throw e;
             } finally {
-                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(fafanmama_at_naver_com)
+                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(parkjunhong77@gmail.com)
                 IOUtils.close(destination);
             }
         };
@@ -497,7 +497,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path)
      */
@@ -508,7 +508,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, boolean)
      */
@@ -519,7 +519,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int)
      */
@@ -530,7 +530,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int, boolean)
      */
@@ -562,7 +562,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String)
      */
@@ -573,7 +573,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, boolean)
      */
@@ -584,7 +584,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int)
      */
@@ -595,7 +595,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int, boolean)
      */
@@ -608,7 +608,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#getFileType(java.lang.String)
      */
@@ -621,7 +621,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#getFileType(java.lang.String, int)
      */
@@ -670,7 +670,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#list(java.lang.String)
      */
@@ -681,7 +681,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#list(java.lang.String, int)
      */
@@ -709,7 +709,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#mkdirs(java.lang.String)
      */
@@ -720,7 +720,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#mkdirs(java.lang.String, int)
      */
@@ -757,7 +757,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String)
      */
@@ -770,7 +770,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, boolean)
      */
@@ -783,7 +783,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int)
      */
@@ -796,7 +796,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int, boolean)
      */
@@ -810,7 +810,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#rm(java.lang.String)
      */
@@ -823,7 +823,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFile#rm(java.lang.String, int)
      */
@@ -937,7 +937,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      *            메시지
      *
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void updateProgressState(boolean isError, String message) {
         if (this.progressMonitor == null) {
@@ -950,7 +950,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String)
      */
@@ -961,7 +961,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String, int)
      */
@@ -972,7 +972,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String)
      */
@@ -983,7 +983,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String, int)
@@ -995,7 +995,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String)
      */
@@ -1006,7 +1006,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int)
      */
@@ -1026,7 +1026,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
             } catch (SftpException e) {
                 throw e;
             } finally {
-                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(fafanmama_at_naver_com)
+                // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(parkjunhong77@gmail.com)
                 IOUtils.close(source);
             }
         };
@@ -1044,7 +1044,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String)
      */
@@ -1055,7 +1055,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String, int)
      */
@@ -1071,7 +1071,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String)
      */
@@ -1082,7 +1082,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String, int)
      */
@@ -1093,7 +1093,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String)
      */
@@ -1104,7 +1104,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, java.nio.charset.Charset)
      */
@@ -1115,7 +1115,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int)
      */
@@ -1126,7 +1126,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int,
      *      java.nio.charset.Charset)

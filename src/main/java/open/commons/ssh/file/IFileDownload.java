@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 9:09:54
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -42,7 +42,7 @@ import open.commons.Result;
  * 
  * @since 2020. 10. 14.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IFileDownload {
 
@@ -64,7 +64,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty @NotEmpty String source, @NotNull @NotNull File destination) throws IOException;
@@ -90,7 +90,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty @NotEmpty String source, @NotNull @NotNull File destination, boolean overwrite) throws IOException;
@@ -115,7 +115,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty @NotEmpty String source, @NotNull @NotNull File destination, @Min(1) int connectTimeout) throws IOException;
@@ -143,7 +143,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty @NotEmpty String source, @NotNull @NotNull File destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
@@ -166,7 +166,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> download(@NotEmpty String source, OutputStream destination);
 
@@ -190,7 +190,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> download(@NotEmpty String source, OutputStream destination, @Min(1) int connectTimeout);
 
@@ -212,7 +212,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, Path destination) throws IOException;
@@ -238,7 +238,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, Path destination, boolean overwrite) throws IOException;
@@ -263,7 +263,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, Path destination, @Min(1) int connectTimeout) throws IOException;
@@ -291,7 +291,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, Path destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
@@ -314,7 +314,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, @NotEmpty String destination) throws IOException;
@@ -339,7 +339,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, @NotEmpty String destination, boolean overwrite) throws IOException;
@@ -364,7 +364,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, @NotEmpty String destination, @Min(1) int connectTimeout) throws IOException;
@@ -392,7 +392,7 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotEmpty String source, @NotEmpty String destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;

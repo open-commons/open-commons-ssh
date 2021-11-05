@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2021 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2021. 10. 28. 오후 5:59:34
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -39,7 +39,7 @@ import com.jcraft.jsch.SftpATTRS;
  * 
  * @since 2021. 10. 28.
  * @version 0.2.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public enum FileType {
 
@@ -78,7 +78,7 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getCode() {
         return this.code;
@@ -98,7 +98,7 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public int getFlag() {
         return this.flag;
@@ -125,7 +125,7 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see SftpATTRS
      */
     public static FileType get(final int flag, final int permissions) {

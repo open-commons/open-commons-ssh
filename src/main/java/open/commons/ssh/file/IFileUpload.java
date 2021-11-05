@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 9:09:54
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -39,7 +39,7 @@ import open.commons.Result;
  * 
  * @since 2020. 10. 14.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IFileUpload {
 
@@ -60,7 +60,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(byte[] source, String destination);
 
@@ -83,7 +83,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(byte[] source, String destination, int connectTimeout);
 
@@ -104,7 +104,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
     Result<Boolean> upload(File source, String destination) throws IOException;
@@ -128,7 +128,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
     Result<Boolean> upload(File source, String destination, int connectTimeout) throws IOException;
@@ -150,7 +150,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(InputStream source, String destination);
 
@@ -173,7 +173,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(InputStream source, String destination, int connectTimeout);
 
@@ -194,7 +194,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(Path source, String destination) throws IOException;
@@ -218,7 +218,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(Path source, String destination, int connectTimeout) throws IOException;
@@ -240,7 +240,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(String source, String destination) throws IOException;
@@ -264,7 +264,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(String source, String destination, int connectTimeout) throws IOException;
@@ -285,7 +285,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(String source, String destination);
 
@@ -308,7 +308,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(String source, String destination, Charset charset);
 
@@ -331,7 +331,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(String source, String destination, int connectTimeout);
 
@@ -356,7 +356,7 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(String source, String destination, int connectTimeout, Charset charset);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 5:43:59
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -43,7 +43,7 @@ import com.jcraft.jsch.Session;
  * 
  * @since 2020. 10. 14.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SshConnection implements IConnectionInfo, AutoCloseable {
 
@@ -103,7 +103,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.AutoCloseable#close()
      */
@@ -130,7 +130,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Session createSession() throws JSchException {
 
@@ -262,7 +262,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

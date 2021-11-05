@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 14. 오후 4:01:07
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -33,7 +33,7 @@ import javax.validation.constraints.NotNull;
  * 
  * @since 2020. 10. 14.
  * @version 0.1.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
 
@@ -78,7 +78,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
@@ -159,7 +159,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

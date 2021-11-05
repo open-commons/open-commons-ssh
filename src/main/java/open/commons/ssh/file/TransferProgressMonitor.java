@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 15. 오전 10:37:42
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -37,7 +37,7 @@ import com.jcraft.jsch.SftpProgressMonitor;
  * 
  * @since 2020. 10. 15.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class TransferProgressMonitor implements SftpProgressMonitor {
     /** 설정되지 않은 상태의 파일 크기 */
@@ -111,7 +111,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#count(long)
      */
@@ -133,7 +133,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#end()
      */
@@ -272,7 +272,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String, java.lang.String, long)
      */
@@ -359,7 +359,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
@@ -398,7 +398,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      *
      *
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void updated() {
         synchronized (this.mutexUpdate) {

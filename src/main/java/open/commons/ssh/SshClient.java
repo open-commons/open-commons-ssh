@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 10. 15. 오후 2:58:15
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -47,7 +47,7 @@ import com.jcraft.jsch.Session;
  * 
  * @since 2020. 10. 15.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public abstract class SshClient implements AutoCloseable {
 
@@ -83,7 +83,7 @@ public abstract class SshClient implements AutoCloseable {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.AutoCloseable#close()
      */
@@ -118,7 +118,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, JSchFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
@@ -161,7 +161,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
@@ -192,7 +192,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #getSession(boolean, int)
      */
@@ -217,7 +217,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Session getSession(boolean autoConnect) throws JSchException {
         return getSession(autoConnect, DEFAULT_CONNECT_TIMEOUT);
@@ -242,7 +242,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Session getSession(boolean autoConnect, int connectTimeout) throws JSchException {
         ReentrantLock lock = new ReentrantLock(true);
@@ -284,7 +284,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Session getSession(int connectTimeout) throws JSchException {
         return getSession(true, connectTimeout);
@@ -331,7 +331,7 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
         Session session = getSession(true, connectTimeout);
@@ -344,7 +344,7 @@ public abstract class SshClient implements AutoCloseable {
 
     /**
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
