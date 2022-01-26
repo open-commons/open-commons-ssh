@@ -100,7 +100,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      *            데이터 저장 경로
      * @param sourcefileSize
      *            읽어올 데이터 크기.<br>
-     *            업로드인 경우 반드시 입력을 해야 진행률을 계산할 수 있다.
+     *            업로드인 경우 반드시 입력을 해야 진행률을 계산할 수 있습니다.
      * @since 2020. 10. 15.
      */
     public TransferProgressMonitor(String source, String destination, long sourcefileSize) {
