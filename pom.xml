@@ -21,7 +21,7 @@
 
 		<!-- >>> begin: dependencies -->
 		<org.apache.logging.log4j-api.version>2.17.2</org.apache.logging.log4j-api.version>
-		<slf4j-api.version>1.7.36</slf4j-api.version>
+		<!-- slf4j-api.version>1.7.36</slf4j-api.version> -->
 
 		<open-commons-core.version>1.8.0-SNAPSHOT</open-commons-core.version>
 
@@ -76,11 +76,13 @@
 
 		<!-- begin: slf4j -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j-api.version}</version>
 		</dependency>
+		-->
 		<!-- end: slf4j -->
 
 		<!-- <<< end: logging -->
