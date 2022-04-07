@@ -1,3 +1,6 @@
+[2022/04/07]
+- Release: 0.2.0
+
 [2022/03/16]
 - Dependencies
   + org.apache.logging.log4j:log4j-core:1.7.2
