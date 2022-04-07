@@ -28,7 +28,7 @@ package open.commons.ssh.utils;
 
 import java.util.function.Function;
 
-import open.commons.function.TripleFunction;
+import open.commons.core.function.TripleFunction;
 
 import com.jcraft.jsch.Session;
 

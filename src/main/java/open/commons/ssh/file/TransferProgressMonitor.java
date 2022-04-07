@@ -29,7 +29,7 @@ package open.commons.ssh.file;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import open.commons.concurrent.Mutex;
+import open.commons.core.concurrent.Mutex;
 
 import com.jcraft.jsch.SftpProgressMonitor;
 

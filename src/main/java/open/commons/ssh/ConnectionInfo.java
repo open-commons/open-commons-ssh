@@ -31,7 +31,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import open.commons.utils.StringUtils;
+import open.commons.core.utils.StringUtils;
 
 /**
  * 시스템 접속정보를 제공한다.

@@ -29,7 +29,7 @@ package open.commons.ssh.exec;
 import java.util.List;
 import java.util.function.Supplier;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 /**
  * 

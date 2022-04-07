@@ -45,17 +45,17 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import open.commons.Result;
+import open.commons.core.Result;
+import open.commons.core.utils.ExceptionUtils;
+import open.commons.core.utils.FileUtils;
+import open.commons.core.utils.IOUtils;
+import open.commons.core.utils.NumberUtils;
+import open.commons.core.utils.StringUtils;
 import open.commons.ssh.ChannelType;
 import open.commons.ssh.SshClient;
 import open.commons.ssh.SshConnection;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.ssh.function.SftpFunction;
-import open.commons.utils.ExceptionUtils;
-import open.commons.utils.FileUtils;
-import open.commons.utils.IOUtils;
-import open.commons.utils.NumberUtils;
-import open.commons.utils.StringUtils;
 
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;

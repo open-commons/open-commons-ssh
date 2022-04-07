@@ -33,7 +33,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 import com.jcraft.jsch.ChannelSftp.LsEntry;
 

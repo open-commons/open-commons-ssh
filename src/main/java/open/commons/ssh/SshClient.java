@@ -33,10 +33,10 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import open.commons.Result;
+import open.commons.core.Result;
+import open.commons.core.utils.IOUtils;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.ssh.function.SftpFunction;
-import open.commons.utils.IOUtils;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSchException;

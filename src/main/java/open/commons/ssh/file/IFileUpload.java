@@ -33,7 +33,7 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 /**
  * 
