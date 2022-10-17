@@ -269,11 +269,11 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("SshConnection [username=");
+        builder.append("SshConnection [username='");
         builder.append(username);
-        builder.append(", password=");
+        builder.append("', password='");
         builder.append(password);
-        builder.append(", host=");
+        builder.append("', host=");
         builder.append(host);
         builder.append(", port=");
         builder.append(port);
