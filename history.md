@@ -1,3 +1,7 @@
+[2024/10/31]
+- ETC
+  + Maven Repository 주소 변경 (http -> https)
+  
 [2022/04/07]
 - Release: 0.3.0-SNAPSHOT
 - Tage: 0.2.0
