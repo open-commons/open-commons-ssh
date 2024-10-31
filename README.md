@@ -17,13 +17,13 @@ See [wiki](https://github.com/parkjunhong/open-commons-ssh/wiki)
 
 ---
 # Repository
-maven (**[Go to LATEST](http://nexus3.ymtech.co.kr/#browse/browse:maven-public:open%2Fcommons%2Fopen-commons-ssh)**)
+maven (**[Go to LATEST](https://nexus3.ymtech.co.kr/#browse/browse:maven-public:open%2Fcommons%2Fopen-commons-ssh)**)
 ``` xml
 <repositories>
   <repository>
     <id>ymtech.kr</id>
     <name>YMTECH Maven Repository</name>
-    <url>http://nexus3.ymtech.co.kr/repository/maven-public/</url>
+    <url>https://nexus3.ymtech.co.kr/repository/maven-public/</url>
     <layout>default</layout>
   </repository>
 </repositories>
