@@ -1,7 +1,7 @@
 [2025/02/17]
 - Snapshot: 0.4.0-SNAPSHOT
 - Dependencies:
-  + open.commons.core: 2.1.0-SNAPSHOT
+  + open-commoms-core-dependencies: 2.1.0-SNAPSHOT
   
 [2025/02/17]
 - Release: 0.3.0
