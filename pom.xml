@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
 	<artifactId>open-commons-ssh</artifactId>
-	<version>0.3.0</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Open Commons for SSH (Java 1.8 or higher)</name>
 
@@ -23,7 +23,7 @@
 		<org.apache.logging.log4j-api.version>2.17.2</org.apache.logging.log4j-api.version>
 		<!-- slf4j-api.version>1.7.36</slf4j-api.version> -->
 
-		<open-commons-core.version>2.0.0-SNAPSHOT</open-commons-core.version>
+		<open-commons-core.version>2.1.0-SNAPSHOT</open-commons-core.version>
 
 		<jsh.version>0.1.55</jsh.version>
 		<jsch-ex.version>0.1.55.1</jsch-ex.version>
