@@ -1,3 +1,19 @@
+[2025/02/21]
+Apply 'Maven Central Deployment'
+
+- Update
+  + <deploymentManagement>
+    + Release: Maven Central (https://central.sonatype.com)
+  + 'open.commons' dependencies 
+    + groupId: io.github.open-commons
+  + 'open.commons.external' dependencies 
+    + groupId: io.github.open-commons-ext
+- Add
+  + <build>
+    + org.sonatype.central:central-publishing-maven-plugin
+    + org.apache.maven.plugins:maven-gpg-plugin
+    
+
 [2025/02/17]
 - Snapshot: 0.4.0-SNAPSHOT
 - Dependencies:
