@@ -33,6 +33,9 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import open.commons.core.Result;
 
 /**
@@ -62,7 +65,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> upload(byte[] source, String destination);
+    Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -85,7 +88,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> upload(byte[] source, String destination, int connectTimeout);
+    Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination, int connectTimeout);
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -107,7 +110,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
-    Result<Boolean> upload(File source, String destination) throws IOException;
+    Result<Boolean> upload(@NotNull File source, @NotBlank String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -131,7 +134,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
-    Result<Boolean> upload(File source, String destination, int connectTimeout) throws IOException;
+    Result<Boolean> upload(@NotNull File source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -152,7 +155,33 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> upload(InputStream source, String destination);
+    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2025. 7. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
+     * @param autoClose
+     *            데이터 저장 객체 자동 종료 여부.
+     * @return
+     *
+     * @since 2025. 7. 23.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see AutoCloseable
+     */
+    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, boolean autoClose);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -175,7 +204,35 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> upload(InputStream source, String destination, int connectTimeout);
+    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout);
+
+    /**
+     * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2025. 7. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param source
+     *            업로드할 데이터
+     * @param destination
+     *            데이터 저장 경로 (절대경로)
+     * @param connectTimeout
+     *            접속대기 제한시간 (단위: ms)
+     * @param autoClose
+     *            데이터 저장 객체 자동 종료 여부.
+     * @return
+     *
+     * @since 2025. 7. 23.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see AutoCloseable
+     */
+    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout, boolean autoClose);
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -197,7 +254,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
-    Result<Boolean> upload(Path source, String destination) throws IOException;
+    Result<Boolean> upload(@NotNull Path source, @NotBlank String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -221,7 +278,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
-    Result<Boolean> upload(Path source, String destination, int connectTimeout) throws IOException;
+    Result<Boolean> upload(@NotNull Path source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -243,7 +300,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
-    Result<Boolean> upload(String source, String destination) throws IOException;
+    Result<Boolean> upload(@NotBlank String source, @NotBlank String destination) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -267,7 +324,7 @@ public interface IFileUpload {
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
-    Result<Boolean> upload(String source, String destination, int connectTimeout) throws IOException;
+    Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다.<br>
@@ -287,7 +344,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> uploadString(String source, String destination);
+    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -310,7 +367,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> uploadString(String source, String destination, Charset charset);
+    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, Charset charset);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -333,7 +390,7 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> uploadString(String source, String destination, int connectTimeout);
+    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout);
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -358,6 +415,6 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    Result<Boolean> uploadString(String source, String destination, int connectTimeout, Charset charset);
+    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout, Charset charset);
 
 }

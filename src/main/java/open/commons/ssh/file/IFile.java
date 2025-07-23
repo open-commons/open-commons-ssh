@@ -30,8 +30,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import open.commons.core.Result;
 
@@ -65,7 +64,7 @@ public interface IFile {
      * @since 2020. 10. 26.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<LsEntry> chmodOtcalMode(@NotNull @NotEmpty String filepath, int permission);
+    public Result<LsEntry> chmodOtcalMode(@NotBlank String filepath, int permission);
 
     /**
      * 파일 권한을 변경한다.<br>
@@ -88,7 +87,7 @@ public interface IFile {
      * @since 2020. 10. 26.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<LsEntry> chmodOtcalMode(@NotNull @NotEmpty String filepath, int permission, @Min(1) int connectTimeout);
+    public Result<LsEntry> chmodOtcalMode(@NotBlank String filepath, int permission, @Min(1) int connectTimeout);
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
@@ -111,7 +110,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination) throws IOException;
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
@@ -136,7 +135,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, boolean overwrite) throws IOException;
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
@@ -161,7 +160,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, int connectTimeout) throws IOException;
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
@@ -188,7 +187,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> copy(@NotEmpty String source, @NotEmpty String destination, int connectTimeout, boolean overwrite) throws IOException;
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException;
 
     /**
      * 파일을 삭제한다. <br>
@@ -207,7 +206,7 @@ public interface IFile {
      * @since 2020. 10. 27.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> delete(@NotNull @NotEmpty String filepath);
+    public Result<Boolean> delete(@NotBlank String filepath);
 
     /**
      * 파일을 삭제한다. <br>
@@ -228,7 +227,7 @@ public interface IFile {
      * @since 2020. 10. 27.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> delete(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
+    public Result<Boolean> delete(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리를 삭제한다. <br>
@@ -247,7 +246,7 @@ public interface IFile {
      * @since 2020. 10. 27.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> deleteDir(@NotNull @NotEmpty String filepath);
+    public Result<Boolean> deleteDir(@NotBlank String filepath);
 
     /**
      * 디렉토리를 삭제한다. <br>
@@ -268,7 +267,7 @@ public interface IFile {
      * @since 2020. 10. 27.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> deleteDir(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
+    public Result<Boolean> deleteDir(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 파일 유형을 제공한다. <br>
@@ -288,7 +287,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<FileType> getFileType(@NotEmpty String pathname);
+    public Result<FileType> getFileType(@NotBlank String pathname);
 
     /**
      * 파일 유형을 제공한다. <br>
@@ -310,7 +309,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<FileType> getFileType(@NotEmpty String pathname, @Min(1) int connectTimeout);
+    public Result<FileType> getFileType(@NotBlank String pathname, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리 여부를 제공한다.<br>
@@ -330,7 +329,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isDirectory(@NotEmpty String pathname) {
+    default Result<Boolean> isDirectory(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -359,7 +358,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isDirectory(@NotEmpty String pathname, @Min(1) int connectTimeout) {
+    default Result<Boolean> isDirectory(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -386,7 +385,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isFile(@NotEmpty String pathname) {
+    default Result<Boolean> isFile(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -415,7 +414,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isFile(@NotEmpty String pathname, @Min(1) int connectTimeout) {
+    default Result<Boolean> isFile(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -442,7 +441,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isSocket(@NotEmpty String pathname) {
+    default Result<Boolean> isSocket(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -471,7 +470,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isSocket(@NotEmpty String pathname, @Min(1) int connectTimeout) {
+    default Result<Boolean> isSocket(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -498,7 +497,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isSymbolicLink(@NotEmpty String pathname) {
+    default Result<Boolean> isSymbolicLink(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -527,7 +526,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default Result<Boolean> isSymbolicLink(@NotEmpty String pathname, @Min(1) int connectTimeout) {
+    default Result<Boolean> isSymbolicLink(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
         if (resultFileType.isError()) {
             return Result.error(resultFileType.getMessage());
@@ -553,7 +552,7 @@ public interface IFile {
      * @since 2020. 10. 23.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath);
+    public Result<List<LsEntry>> list(@NotBlank String filepath);
 
     /**
      * 파일 또는 디렉토리 조회 결과를 제공한다. <br>
@@ -574,7 +573,7 @@ public interface IFile {
      * @since 2020. 10. 23.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<List<LsEntry>> list(@NotNull @NotEmpty String filepath, @Min(1) int connectTimeout);
+    public Result<List<LsEntry>> list(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리를 생성한다. (부모 디렉토리까지 자동으로 생성한다.) <br>
@@ -593,7 +592,7 @@ public interface IFile {
      * @since 2020. 10. 26.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> mkdirs(@NotNull @NotEmpty String directory);
+    public Result<Boolean> mkdirs(@NotBlank String directory);
 
     /**
      * 디렉토리를 생성한다. (부모 디렉토리까지 자동으로 생성한다.) <br>
@@ -614,7 +613,7 @@ public interface IFile {
      * @since 2020. 10. 26.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> mkdirs(@NotNull @NotEmpty String directory, @Min(1) int connectTimeout);
+    public Result<Boolean> mkdirs(@NotBlank String directory, @Min(1) int connectTimeout);
 
     /**
      * 파일을 이동시킨다. <b>(원격서버에서 처리됨).</b> <br>
@@ -637,7 +636,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination) throws IOException;
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination) throws IOException;
 
     /**
      * 파일을 이동시킨다. <b>(원격서버에서 처리됨).</b> <br>
@@ -662,7 +661,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, boolean overwrite) throws IOException;
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
 
     /**
      * 파일을 이동시킨다. <b>(원격서버에서 처리됨).</b> <br>
@@ -687,7 +686,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, int connectTimeout) throws IOException;
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /**
      * 파일을 이동시킨다. <b>(원격서버에서 처리됨).</b> <br>
@@ -714,7 +713,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> move(@NotEmpty String source, @NotEmpty String destination, int connectTimeout, boolean overwrite) throws IOException;
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException;
 
     /**
      * 파일을 삭제한다. <br>
@@ -734,7 +733,7 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> rm(@NotEmpty String filepath);
+    public Result<Boolean> rm(@NotBlank String filepath);
 
     /**
      * 파일을 삭제한다. <br>
@@ -756,6 +755,6 @@ public interface IFile {
      * @version 0.2.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<Boolean> rm(@NotEmpty String filepath, @Min(1) int connectTimeout);
+    public Result<Boolean> rm(@NotBlank String filepath, @Min(1) int connectTimeout);
 
 }

@@ -1,6 +1,19 @@
+[2025/07/23]
+- Add
+  + open.commons.ssh.file.IFileDownload: OutputStream 형태의 출력 데이터 종료 여부 추가
+    + download(String, OutputStream, boolean)
+    + download(String, OutputStream, int, boolean)
+  + open.commons.ssh.file.IFileUpload: InputStream 형태의 입력 데이터 종료 여부 추가
+    + upload(InputStream, String, boolean)
+    + upload(InputStream, String, int, boolean)
+  + open.commons.ssh.file.FileTransfer: IFileDownload, IFileUpload 메소드 추가 반영 
+    + download(String, OutputStream, boolean)
+    + download(String, OutputStream, int, boolean)
+    + upload(InputStream, String, boolean)
+    + upload(InputStream, String, int, boolean)
+
 [2025/02/21]
 Apply 'Maven Central Deployment'
-
 - Update
   + <deploymentManagement>
     + Release: Maven Central (https://central.sonatype.com)
