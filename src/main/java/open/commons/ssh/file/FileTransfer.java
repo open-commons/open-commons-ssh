@@ -473,7 +473,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, boolean autoClose) {
-        return download(source, destination, DEFAULT_CONNECT_TIMEOUT, true);
+        return download(source, destination, DEFAULT_CONNECT_TIMEOUT, autoClose);
     }
 
     /**
