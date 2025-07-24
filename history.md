@@ -1,3 +1,9 @@
+[2025/07/24]
+- Dependencies
+  + Add
+    + jakarta.validation:jakarata.validation-api:${managed-version}
+    + com.google.code.findbugs:jsr305:${managed-version}
+
 [2025/07/23]
 - Add
   + open.commons.ssh.file.IFileDownload: OutputStream 형태의 출력 데이터 종료 여부 추가
