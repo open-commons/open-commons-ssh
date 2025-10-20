@@ -71,7 +71,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -91,7 +91,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -152,7 +152,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the destination
@@ -173,7 +173,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the message
@@ -194,7 +194,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the rate
@@ -215,7 +215,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the source
@@ -236,7 +236,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the sourcefileSize
@@ -257,7 +257,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the totalCount
@@ -302,7 +302,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the status
@@ -322,7 +322,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param message
@@ -343,7 +343,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param status
@@ -393,7 +393,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      *

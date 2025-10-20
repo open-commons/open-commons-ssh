@@ -80,7 +80,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param username
@@ -123,7 +123,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @return
@@ -165,7 +165,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the host
@@ -186,7 +186,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the password
@@ -207,7 +207,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the port
@@ -228,7 +228,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the username

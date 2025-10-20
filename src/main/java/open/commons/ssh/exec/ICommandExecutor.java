@@ -50,7 +50,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param connectTimeout
@@ -75,7 +75,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param args
@@ -104,7 +104,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param connectTimeout
@@ -133,7 +133,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param args
@@ -154,7 +154,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param connectTimeout
@@ -176,7 +176,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param connectTimeout
@@ -200,7 +200,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param cmds
@@ -222,7 +222,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param uuid
@@ -244,7 +244,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param connectTimeout
@@ -266,7 +266,7 @@ public interface ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param pids

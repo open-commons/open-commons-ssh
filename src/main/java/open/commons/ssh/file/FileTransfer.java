@@ -83,7 +83,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param ssh
@@ -103,7 +103,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 10. 28.		박준홍			최초 작성
+     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param source
@@ -313,7 +313,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param sftp
@@ -680,7 +680,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the progressMonitor
@@ -932,7 +932,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param progressMonitor
@@ -953,7 +953,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 19.		박준홍			최초 작성
+     * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param isError

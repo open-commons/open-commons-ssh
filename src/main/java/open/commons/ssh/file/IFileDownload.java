@@ -53,7 +53,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -76,7 +76,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -102,7 +102,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -127,7 +127,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -155,7 +155,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -177,7 +177,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2025. 7. 23.		박준홍			최초 작성
+     * 2025. 7. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param source
@@ -203,7 +203,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -227,7 +227,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2025. 7. 23.		박준홍			최초 작성
+     * 2025. 7. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param source
@@ -255,7 +255,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -278,7 +278,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -304,7 +304,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -329,7 +329,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -357,7 +357,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -380,7 +380,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -405,7 +405,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source
@@ -430,7 +430,7 @@ public interface IFileDownload {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param source

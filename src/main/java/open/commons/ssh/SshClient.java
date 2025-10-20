@@ -69,7 +69,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param ssh
@@ -99,7 +99,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 15.        박준홍         최초 작성
+     * 2020. 10. 15.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param <T>
@@ -142,7 +142,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 15.        박준홍         최초 작성
+     * 2020. 10. 15.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param <T>
@@ -185,7 +185,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 14.        박준홍         최초 작성
+     * 2020. 10. 14.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @return
@@ -207,7 +207,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 14.        박준홍         최초 작성
+     * 2020. 10. 14.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @param autoConnect
@@ -230,7 +230,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 14.        박준홍         최초 작성
+     * 2020. 10. 14.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @param autoConnect
@@ -274,7 +274,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 14.        박준홍         최초 작성
+     * 2020. 10. 14.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @param connectTimeout
@@ -297,7 +297,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 14.        박준홍         최초 작성
+     * 2020. 10. 14.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
      * @return the ssh
@@ -317,7 +317,7 @@ public abstract class SshClient implements AutoCloseable {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param <T>

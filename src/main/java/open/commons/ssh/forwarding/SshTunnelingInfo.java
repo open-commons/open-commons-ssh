@@ -75,7 +75,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param user
@@ -100,7 +100,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param remote
@@ -127,7 +127,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param remotes
@@ -154,7 +154,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param remotes
@@ -177,7 +177,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the host
@@ -198,7 +198,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @return
@@ -217,7 +217,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the port
@@ -237,7 +237,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the remotePortForwardings
@@ -257,7 +257,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the username
@@ -277,7 +277,7 @@ public class SshTunnelingInfo {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param remotePortForwardings

@@ -69,7 +69,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 15.		박준홍			최초 작성
+     * 2020. 10. 15.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param ssh
@@ -337,7 +337,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 16.		박준홍			최초 작성
+     * 2020. 10. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
      * @param cmdTpl

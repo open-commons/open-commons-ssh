@@ -60,7 +60,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @param remotePortFwdStr
@@ -104,7 +104,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the remotePort
@@ -124,7 +124,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the serviceHost
@@ -144,7 +144,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2020. 10. 14.		박준홍			최초 작성
+     * 2020. 10. 14.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      * 
      * @return the servicePort
