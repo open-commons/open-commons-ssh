@@ -110,6 +110,9 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
- 
- # Development
+
+# VSCode 환경설정
+.vscode
+
+# Development
 /src/test
