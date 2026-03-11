@@ -29,8 +29,8 @@ package open.commons.ssh.file;
 import java.io.IOException;
 import java.util.List;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.core.Result;
 
