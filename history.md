@@ -4,6 +4,12 @@ Update dependencies.
 - Dependencies
   + Delete
     + com.google.code.findbugs:jsr305:3.0.2
+  + Add
+    + com.lmax:disruptor:4.4.4
+    + org.slf4j.slf4j-api:2.0.16
+    + org.apache.logging.log4j:log4j-core:2.24.3
+    + org.apache.logging.log4j:log4j-api:2.24.3
+    + org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3
     
 [2026/03/11]
 - SNAPSHOT: 3.0.0-SHAPSHOT

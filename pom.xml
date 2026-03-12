@@ -60,6 +60,42 @@
   </distributionManagement>
 
   <dependencies>
+    <!-- ********************** -->
+    <!-- >>> begin: logging -->
+
+    <!-- begin: log4j2 -->
+    <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+    <!-- for llog4j-2.x: making all asynchronous loggers -->
+    <dependency>
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+    </dependency>
+    <!-- end: log4j2 -->
+    
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
+    </dependency>    
+
+    <!-- begin: slf4j -->
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <!-- end: slf4j -->
+
+    <!-- <<< end: logging -->
+    <!-- ********************** -->
+    
     <!-- ************** -->
     <!-- >>> begin: open.commons -->
     <!-- begin: open.commons.core -->
