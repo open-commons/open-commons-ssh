@@ -1,4 +1,10 @@
-Update dependencies.
+[2026/04/07]
+- Updated
+  + package-info.java 파일 추가
+  + 'null' 체크 우회를 '@SuppressWarnings'으로 변환 중.
+    + open.commons.ssh
+    + open.commons.ssh.exec 
+
 
 [2026/03/12]
 - Dependencies

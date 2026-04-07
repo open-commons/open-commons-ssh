@@ -26,6 +26,7 @@
 
 package open.commons.ssh;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +40,7 @@ import com.jcraft.jsch.UserInfo;
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SshUserInfo implements UserInfo {
+
     private final Logger logger;
 
     /** 비밀번호 */
@@ -85,7 +87,8 @@ public class SshUserInfo implements UserInfo {
      *
      * @since 2020. 10. 14.
      */
-    public SshUserInfo(String password, String passPhrase, Logger logger) {
+    @SuppressWarnings("null")
+    public SshUserInfo(String password, String passPhrase, @Nullable Logger logger) {
         this.password = password;
         this.passPhrase = passPhrase;
         this.logger = logger != null ? logger : LoggerFactory.getLogger(getClass());
@@ -120,7 +123,7 @@ public class SshUserInfo implements UserInfo {
      * @see com.jcraft.jsch.UserInfo#promptPassphrase(java.lang.String)
      */
     @Override
-    public boolean promptPassphrase(String message) {
+    public boolean promptPassphrase(@Nullable String message) {
         logger.trace(" > promptPassPhrase: {}", message);
         return true;
     }
@@ -132,7 +135,7 @@ public class SshUserInfo implements UserInfo {
      * @see com.jcraft.jsch.UserInfo#promptPassword(java.lang.String)
      */
     @Override
-    public boolean promptPassword(String message) {
+    public boolean promptPassword(@Nullable String message) {
         logger.trace(" > promptPassword: {}", message);
         return true;
     }
@@ -144,7 +147,7 @@ public class SshUserInfo implements UserInfo {
      * @see com.jcraft.jsch.UserInfo#promptYesNo(java.lang.String)
      */
     @Override
-    public boolean promptYesNo(String message) {
+    public boolean promptYesNo(@Nullable String message) {
         logger.trace(" > promptYesNo: {}", message);
         return true;
     }
@@ -156,10 +159,11 @@ public class SshUserInfo implements UserInfo {
      * @see com.jcraft.jsch.UserInfo#showMessage(java.lang.String)
      */
     @Override
-    public void showMessage(String message) {
+    public void showMessage(@Nullable String message) {
         logger.debug(" > showMessage: {}", message);
     }
 
+    @SuppressWarnings("null")
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

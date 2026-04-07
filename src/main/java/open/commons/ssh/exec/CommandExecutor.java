@@ -31,13 +31,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import open.commons.core.Result;
 import open.commons.core.text.NamedTemplate;
-import open.commons.core.utils.ArrayUtils;
 import open.commons.core.utils.CollectionUtils;
 import open.commons.core.utils.IOUtils;
+import open.commons.core.utils.ObjectUtils;
 import open.commons.ssh.ChannelType;
 import open.commons.ssh.SshClient;
 import open.commons.ssh.SshConnection;
@@ -82,19 +83,32 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(int, java.lang.String[])
      */
+    // 아래 내용에 적용됨.
+    // - ObjectUtils.requireNonNulls((Object[]) args);
+    // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
+    // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
+    // 아래 내용에 적용됨.
+    // - InputStream in = channel.getInputStream()
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public Result<List<String>> listPids(int connectTimeout, String... args) {
+        ObjectUtils.requireNonNulls((Object[]) args);
+
         logger.debug("connect-timeout={}, arguments={}", connectTimeout, Arrays.toString(args));
 
         JSchFunction<ChannelExec, Result<List<String>>> action = channel -> {
             // 조회 명령어 생성/설정
             // grep 실행시 자신의 명령어를 제거하기 위함.
-            String[] newArgs = ArrayUtils.copyOf(args, args.length);
+            String[] newArgs = Arrays.copyOf(args, args.length);
             if (newArgs.length > 0) {
                 newArgs[0] = String.join("", "[", String.valueOf(newArgs[0].charAt(0)), "]", newArgs[0].substring(1));
             }
@@ -126,8 +140,10 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(java.lang.String[])
      */
@@ -137,13 +153,26 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(int, java.lang.String[])
      */
+
+    // 아래 내용에 적용됨.
+    // - ObjectUtils.requireNonNulls((Object[]) args);
+    // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
+    // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
+    // 아래 내용에 적용됨.
+    // - InputStream in = channel.getInputStream()
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public Result<List<String>> listProcesses(int connectTimeout, String... args) {
+        ObjectUtils.requireNonNulls((Object[]) args);
 
         logger.debug("connect-timeout={}, arguments={}", connectTimeout, Arrays.toString(args));
 
@@ -176,8 +205,10 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(java.lang.String[])
      */
@@ -187,13 +218,25 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, java.lang.String[])
      */
+    // 아래 내용에 적용됨.
+    // - ObjectUtils.requireNonNulls((Object[]) cmds);
+    // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
+    // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
+    // 아래 내용에 적용됨.
+    // - InputStream in = channel.getInputStream()
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public Result<Boolean> startProcess(int connectTimeout, String... cmds) {
+        ObjectUtils.requireNonNulls((Object[]) cmds);
 
         logger.debug("connect-timeout={}, command={}", connectTimeout, Arrays.toString(cmds));
 
@@ -231,13 +274,24 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * 
+     * @throws NullPointerException
+     *             파라미터({@code uuid, cmds 중에 1개라도})가 {@code null}이거나 {@code cmds}에 {@code null}이 포함된 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier, java.lang.String[])
      */
+    // 아래 내용에 적용됨.
+    // - ObjectUtils.requireNonNulls((Object[]) cmds);
+    // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
+    // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
+    @SuppressWarnings("null")
     @Override
     public Result<String> startProcess(int connectTimeout, Supplier<String> uuid, String... cmds) {
+        Objects.requireNonNull(uuid);
+        ObjectUtils.requireNonNulls((Object[]) cmds);
+
         Result<Boolean> resultStart = startProcess(connectTimeout, cmds);
         if (!resultStart.getResult()) {
             return new Result<String>().setMessage(resultStart.getMessage());
@@ -249,17 +303,21 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         }
 
         String pid = "";
+        String msg = "";
         List<String> pids = resultPids.getData();
-        if (pids.size() > 0) {
+        if (pids != null && pids.size() > 0) {
             pid = pids.get(0);
+            msg = String.format("pids=%s", CollectionUtils.toString(pids));
         }
 
-        return new Result<String>(pid, true).setMessage("pids=%s", CollectionUtils.toString(pids));
+        return new Result<String>(pid, true).setMessage(msg);
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(java.lang.String[])
      */
@@ -269,8 +327,10 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(Supplier, java.lang.String[])
      */
@@ -280,13 +340,25 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code pids})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(int, String...)
      */
+    // 아래 내용에 적용됨.
+    // - ObjectUtils.requireNonNulls((Object[]) pids);
+    // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
+    // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
+    // 아래 내용에 적용됨.
+    // - InputStream in = channel.getInputStream()
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public Result<List<String>> stopProcesses(int connectTimeout, String... pids) {
+        ObjectUtils.requireNonNulls((Object[]) pids);
 
         logger.debug("connect-timeout={}, pids={}", connectTimeout, Arrays.toString(pids));
 
@@ -320,8 +392,10 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
+     * @throws NullPointerException
+     *             파라미터({@code pids})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(String...)
      */
@@ -343,12 +417,20 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @param cmdTpl
      *            실행 명령어 템플릿
      * @param args
+     * 
      * @return
+     * 
+     * @throws NullPointerException
+     *             파라미터({@code cmdTpl, args 중에 1개라도})가 {@code null}이거나 {@code args}에 {@code null}이 포함된 경우 발생.
      *
      * @since 2020. 10. 16.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
+    @SuppressWarnings("null")
     private String toCommand(String cmdTpl, String... args) {
+        Objects.requireNonNull(cmdTpl);
+        ObjectUtils.requireNonNulls((Object[]) args);
+
         String argStr = String.join(" ", args);
         return NamedTemplate.format(cmdTpl, "args", argStr);
     }

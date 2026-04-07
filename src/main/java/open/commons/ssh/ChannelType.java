@@ -28,6 +28,7 @@ package open.commons.ssh;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.jcraft.jsch.Session;
 
@@ -97,10 +98,7 @@ public enum ChannelType {
      * @return an instance of {@link ChannelType}
      */
     public static ChannelType get(String type, boolean ignoreCase) {
-
-        if (type == null) {
-            throw new IllegalArgumentException("'type' MUST NOT be null. input: " + type);
-        }
+        Objects.requireNonNull(type);
 
         if (ignoreCase) {
             for (ChannelType value : values()) {

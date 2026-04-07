@@ -30,6 +30,7 @@ import java.util.Properties;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,13 +55,14 @@ public abstract class SshClient implements AutoCloseable {
     /** 연결 제한 시간. (단위, ms) */
     protected static final int DEFAULT_CONNECT_TIMEOUT = 5000;
 
+    @SuppressWarnings("null")
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     /** SSH 연결 제공 객체 */
     protected final SshConnection ssh;
 
     /** 내부 공용 {@link Session} */
-    protected Session session;
+    protected @Nullable Session session;
 
     /**
      * <br>
@@ -120,11 +122,16 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
+    @SuppressWarnings("null")
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, JSchFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
+        @Nullable
         T channel = null;
         try {
             channel = openChannel(type, connectTimeout, autoConnect);
+            if (channel == null) {
+                throw new JSchException("SSH 채널 생성에 실패하였습니다. (JSch 내부 오류로 null 반환)");
+            }
             return action.apply(channel);
         } catch (Throwable e) {
             return onError.apply(e);
@@ -163,11 +170,16 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
+    @SuppressWarnings("null")
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
+        @Nullable
         T channel = null;
         try {
             channel = openChannel(type, connectTimeout, autoConnect);
+            if (channel == null) {
+                throw new JSchException("SSH 채널 생성에 실패하였습니다. (JSch 내부 오류로 null 반환)");
+            }
             return action.apply(channel);
         } catch (Throwable e) {
             return onError.apply(e);
@@ -244,6 +256,7 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
+    @SuppressWarnings("null")
     protected Session getSession(boolean autoConnect, int connectTimeout) throws JSchException {
         ReentrantLock lock = new ReentrantLock(true);
         try {
@@ -255,7 +268,7 @@ public abstract class SshClient implements AutoCloseable {
                 if (!this.session.isConnected() && autoConnect) {
                     Properties config = new java.util.Properties();
                     config.put("StrictHostKeyChecking", "no");
-                    session.setConfig(config);
+                    this.session.setConfig(config);
 
                     this.session.connect(connectTimeout);
                 }
@@ -333,9 +346,12 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    protected <T extends Channel> T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
+    protected <T extends @Nullable Channel> @Nullable T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
         Session session = getSession(true, connectTimeout);
         T channel = this.ssh.openChannel(session, type);
+        if (channel == null) {
+            return null;
+        }
         if (channelAutoConnect) {
             channel.connect(connectTimeout);
         }
@@ -348,6 +364,7 @@ public abstract class SshClient implements AutoCloseable {
      *
      * @see java.lang.Object#toString()
      */
+    @SuppressWarnings("null")
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -356,7 +373,7 @@ public abstract class SshClient implements AutoCloseable {
         builder.append(", session=");
         builder.append(session);
         builder.append("]");
+        
         return builder.toString();
     }
-
 }

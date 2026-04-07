@@ -33,6 +33,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
+
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -71,7 +73,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
     private final ReentrantLock mutexSession = new ReentrantLock();
 
     /** singleton 방식의 {@link Session} 객체 */
-    private Session session;
+    private @Nullable Session session;
 
     /**
      * <br>
@@ -109,11 +111,9 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      */
     @Override
     public void close() {
-        if (this.session == null) {
-            return;
+        if (this.session != null) {
+            this.session.disconnect();
         }
-
-        this.session.disconnect();
     }
 
     /**
@@ -132,6 +132,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * @since 2020. 10. 14.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
+    @SuppressWarnings("null")
     public Session createSession() throws JSchException {
 
         ReentrantLock lock = this.mutexSession;
@@ -266,6 +267,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      *
      * @see java.lang.Object#toString()
      */
+    @SuppressWarnings("null")
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
