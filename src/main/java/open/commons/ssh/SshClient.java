@@ -26,6 +26,7 @@
 
 package open.commons.ssh;
 
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
@@ -36,6 +37,7 @@ import org.slf4j.LoggerFactory;
 
 import open.commons.core.Result;
 import open.commons.core.utils.IOUtils;
+import open.commons.core.utils.ObjectUtils;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.ssh.function.SftpFunction;
 
@@ -80,12 +82,13 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      */
     public SshClient(SshConnection ssh) {
+        Objects.requireNonNull(ssh);
+
         this.ssh = ssh;
     }
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.AutoCloseable#close()
      */
@@ -120,7 +123,6 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("null")
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, JSchFunction<T, Result<R>> action,
@@ -165,14 +167,16 @@ public abstract class SshClient implements AutoCloseable {
      * @param onError
      *            에러 발생시 처리 함수
      * @return
+     * 
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("null")
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
+        ObjectUtils.requireNonNulls(type, action, onError);
+
         @Nullable
         T channel = null;
         try {
@@ -204,7 +208,6 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #getSession(boolean, int)
      */
@@ -226,10 +229,10 @@ public abstract class SshClient implements AutoCloseable {
      *            대상 서버 자동 연결 여부
      *
      * @return
+     * 
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Session getSession(boolean autoConnect) throws JSchException {
         return getSession(autoConnect, DEFAULT_CONNECT_TIMEOUT);
@@ -251,10 +254,10 @@ public abstract class SshClient implements AutoCloseable {
      *            서버연결 대기시간 (단위: ms)
      *
      * @return
+     * 
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("null")
     protected Session getSession(boolean autoConnect, int connectTimeout) throws JSchException {
@@ -297,7 +300,6 @@ public abstract class SshClient implements AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Session getSession(int connectTimeout) throws JSchException {
         return getSession(true, connectTimeout);
@@ -341,12 +343,14 @@ public abstract class SshClient implements AutoCloseable {
      * @param channelAutoConnect
      *            Channel 자동 연결 여부
      * @return
+     * 
      * @throws JSchException
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T extends @Nullable Channel> @Nullable T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
+        Objects.requireNonNull(type);
+
         Session session = getSession(true, connectTimeout);
         T channel = this.ssh.openChannel(session, type);
         if (channel == null) {
@@ -360,7 +364,6 @@ public abstract class SshClient implements AutoCloseable {
 
     /**
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
@@ -373,7 +376,7 @@ public abstract class SshClient implements AutoCloseable {
         builder.append(", session=");
         builder.append(session);
         builder.append("]");
-        
+
         return builder.toString();
     }
 }

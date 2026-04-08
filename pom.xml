@@ -117,11 +117,16 @@
     <!-- <version>${jsh.version}</version> -->
     <!-- </dependency> -->
     <!-- bug fixed version -->
-    <dependency>
-      <groupId>io.github.open-commons-ext</groupId>
-      <artifactId>com.craft.jsch</artifactId>
-      <version>${jsch-ex.version}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.github.open-commons-ext</groupId>-->
+<!--      <artifactId>com.craft.jsch</artifactId>-->
+<!--      <version>${jsch-ex.version}</version>-->
+<!--    </dependency>-->
+<dependency>
+    <groupId>com.github.mwiede</groupId>
+    <artifactId>jsch</artifactId>
+    <version>2.28.0</version>
+</dependency>
     <!-- end: ssh client -->
     <!-- ************** -->
 

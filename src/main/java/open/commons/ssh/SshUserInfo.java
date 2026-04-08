@@ -26,6 +26,8 @@
 
 package open.commons.ssh;
 
+import java.util.Objects;
+
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,6 +91,9 @@ public class SshUserInfo implements UserInfo {
      */
     @SuppressWarnings("null")
     public SshUserInfo(String password, String passPhrase, @Nullable Logger logger) {
+        Objects.requireNonNull(password);
+        Objects.requireNonNull(passPhrase);
+
         this.password = password;
         this.passPhrase = passPhrase;
         this.logger = logger != null ? logger : LoggerFactory.getLogger(getClass());
@@ -96,7 +101,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#getPassphrase()
      */
@@ -107,7 +111,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#getPassword()
      */
@@ -118,7 +121,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptPassphrase(java.lang.String)
      */
@@ -130,7 +132,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptPassword(java.lang.String)
      */
@@ -142,7 +143,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#promptYesNo(java.lang.String)
      */
@@ -154,7 +154,6 @@ public class SshUserInfo implements UserInfo {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.UserInfo#showMessage(java.lang.String)
      */

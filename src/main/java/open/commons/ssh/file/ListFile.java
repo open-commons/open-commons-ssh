@@ -71,7 +71,6 @@ public class ListFile implements LsEntrySelector {
      * @return
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public List<LsEntry> getEntries() {
         return new ArrayList<>(this.list.values());
@@ -90,7 +89,6 @@ public class ListFile implements LsEntrySelector {
      * @return
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public List<String> getFiles() {
         return new ArrayList<String>(this.list.keySet());
@@ -98,10 +96,14 @@ public class ListFile implements LsEntrySelector {
 
     /**
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.ChannelSftp.LsEntrySelector#select(com.jcraft.jsch.ChannelSftp.LsEntry)
      */
+    // 아래 내용에 적용됨.
+    // - LsEntry entry
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public int select(LsEntry entry) {
         this.list.put(entry.getFilename(), entry);

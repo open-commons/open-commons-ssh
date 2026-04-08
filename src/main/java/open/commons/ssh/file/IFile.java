@@ -40,294 +40,325 @@ import com.jcraft.jsch.ChannelSftp.LsEntry;
  * 파일이나 디렉토리 관련 기능을 제공한다.
  * 
  * @since 2020. 10. 23.
- * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IFile {
 
     /**
      * 파일 권한을 변경한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2020. 10. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 26.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 메소드명 오타 교정(Otcal -> Octal) 및 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            파일 또는 디렉토리 경로
+     *            파일 또는 디렉토리 경로 (절대 {@code null} 및 빈 문자열 불가)
      * @param permission
-     *            8진법 표기 파일 권한
-     * @return
+     *            8진법 표기 파일 권한 (예: 0755)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link LsEntry}) 역시 절대 {@code null}이 아님을 보장함.
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<LsEntry> chmodOtcalMode(@NotBlank String filepath, int permission);
+    // [PATCH] 오타 수정: chmodOtcalMode -> chmodOctalMode
+    public Result<LsEntry> chmodOctalMode(@NotBlank String filepath, int permission);
 
     /**
      * 파일 권한을 변경한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2020. 10. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 26.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 메소드명 오타 교정(Otcal -> Octal) 및 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            파일 또는 디렉토리 경로
+     *            파일 또는 디렉토리 경로 (절대 {@code null} 및 빈 문자열 불가)
      * @param permission
-     *            8진법 표기 파일 권한
+     *            8진법 표기 파일 권한 (예: 0755)
      * @param connectTimeout
-     *            접속대기 제한시간. (단위: ms)
-     * @return
+     *            접속대기 제한시간 (단위: ms, 1 이상이어야 함)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link LsEntry}) 역시 절대 {@code null}이 아님을 보장함.
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public Result<LsEntry> chmodOtcalMode(@NotBlank String filepath, int permission, @Min(1) int connectTimeout);
+    public Result<LsEntry> chmodOctalMode(@NotBlank String filepath, int permission, @Min(1) int connectTimeout);
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param source
-     *            복사할 파일 경로
+     *            복사할 원본 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
      * @param destination
-     *            복사될 파일 경로
-     * @return
+     *            복사될 대상 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
+     *
      * @throws IOException
+     *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param source
-     *            복사할 파일 경로
+     *            복사할 원본 파일 경로
      * @param destination
-     *            복사될 파일 경로
+     *            복사될 대상 파일 경로
      * @param overwrite
-     *            덮어쓰기 여부.
-     * @return
+     *            대상 경로에 파일이 존재할 경우 덮어쓰기 여부
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
+     *
      * @throws IOException
+     *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param source
-     *            복사할 파일 경로
+     *            복사할 원본 파일 경로
      * @param destination
-     *            복사될 파일 경로
+     *            복사될 대상 파일 경로
      * @param connectTimeout
-     *            접속대기 제한시간. (단위: ms)
-     * @return
+     *            접속대기 제한시간 (단위: ms)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
+     *
      * @throws IOException
+     *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
 
     /**
      * 파일을 복사한다. <b>(원격서버에서 처리됨).</b> <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜        | 작성자    |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param source
-     *            복사할 파일 경로
+     *            복사할 원본 파일 경로
      * @param destination
-     *            복사될 파일 경로
+     *            복사될 대상 파일 경로
      * @param connectTimeout
-     *            접속대기 제한시간. (단위: ms)
+     *            접속대기 제한시간 (단위: ms)
      * @param overwrite
-     *            덮어쓰기 여부.
-     * @return
+     *            대상 경로에 파일이 존재할 경우 덮어쓰기 여부
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
+     *
      * @throws IOException
+     *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException;
 
     /**
      * 파일을 삭제한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 10. 27.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            파일 경로
-     * @return
+     *            삭제할 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@NotBlank String filepath);
 
     /**
      * 파일을 삭제한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 10. 27.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            파일 경로
+     *            삭제할 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
      * @param connectTimeout
-     *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *            접속대기 제한 시간 (단위: ms, 1 이상이어야 함)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> delete(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리를 삭제한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 10. 27.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            디렉토리 경로
-     * @return
+     *            삭제할 디렉토리 경로 (절대 {@code null} 및 빈 문자열 불가)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> deleteDir(@NotBlank String filepath);
 
     /**
      * 디렉토리를 삭제한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 10. 27.        parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 8.          parkjunhong77@gmail.com         (3.0.0) 제네릭 Nullability 문서화
      * </pre>
      *
      * @param filepath
-     *            디렉토리 경로
+     *            삭제할 디렉토리 경로 (절대 {@code null} 및 빈 문자열 불가)
      * @param connectTimeout
-     *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *            접속대기 제한 시간 (단위: ms, 1 이상이어야 함)
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> deleteDir(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 파일 유형을 제공한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            파일 경로
-     * @return
+     *
+     * @return 파일 유형 조회 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link FileType}) 역시 절대 {@code null}이 아님을 보장함.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<FileType> getFileType(@NotBlank String pathname);
 
     /**
      * 파일 유형을 제공한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            파일 경로
      * @param connectTimeout
      *            접속대기 제한시간. (단위: ms)
-     * @return
+     *
+     * @return 파일 유형 조회 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link FileType}) 역시 절대 {@code null}이 아님을 보장함.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<FileType> getFileType(@NotBlank String pathname, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isDirectory(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -340,23 +371,24 @@ public interface IFile {
 
     /**
      * 디렉토리 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
      * @param connectTimeout
      *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isDirectory(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -369,21 +401,22 @@ public interface IFile {
 
     /**
      * 파일 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isFile(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -396,23 +429,24 @@ public interface IFile {
 
     /**
      * 파일 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
      * @param connectTimeout
      *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isFile(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -425,21 +459,22 @@ public interface IFile {
 
     /**
      * Socket 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSocket(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -452,23 +487,24 @@ public interface IFile {
 
     /**
      * Socket 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
      * @param connectTimeout
      *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSocket(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -481,21 +517,22 @@ public interface IFile {
 
     /**
      * 심볼릭 링크 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSymbolicLink(@NotBlank String pathname) {
         Result<FileType> resultFileType = getFileType(pathname);
@@ -508,23 +545,24 @@ public interface IFile {
 
     /**
      * 심볼릭 링크 여부를 제공한다.<br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 10. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 10. 28.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param pathname
      *            대상 경로
      * @param connectTimeout
      *            접속대기 제한 시간. (단위: ms)
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default Result<Boolean> isSymbolicLink(@NotBlank String pathname, @Min(1) int connectTimeout) {
         Result<FileType> resultFileType = getFileType(pathname, connectTimeout);
@@ -537,81 +575,87 @@ public interface IFile {
 
     /**
      * 파일 또는 디렉토리 조회 결과를 제공한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 23.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 23.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param filepath
      *            파일 또는 디렉토리 경로
-     * @return 해당 경로가 존재하지 않는 경우 빈 목록을 제공.
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대 {@code null}이 아님을 보장함.<br>
+     *         해당 경로가 존재하지 않는 경우 빈 목록(Empty List)을 제공.
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<LsEntry>> list(@NotBlank String filepath);
 
     /**
      * 파일 또는 디렉토리 조회 결과를 제공한다. <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 23.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 23.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param filepath
      *            파일 또는 디렉토리 경로
      * @param connectTimeout
      *            접속대기 제한시간. (단위: ms)
-     * @return 해당 경로가 존재하지 않는 경우 빈 목록을 제공.
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대 {@code null}이 아님을 보장함.<br>
+     *         해당 경로가 존재하지 않는 경우 빈 목록(Empty List)을 제공.
      *
      * @since 2020. 10. 23.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<LsEntry>> list(@NotBlank String filepath, @Min(1) int connectTimeout);
 
     /**
      * 디렉토리를 생성한다. (부모 디렉토리까지 자동으로 생성한다.) <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 26.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param directory
      *            디렉토리 경로
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> mkdirs(@NotBlank String directory);
 
     /**
      * 디렉토리를 생성한다. (부모 디렉토리까지 자동으로 생성한다.) <br>
-     * 
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     * 날짜       | 작성자   |   내용
      * ------------------------------------------
-     * 2020. 10. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 26.        parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param directory
      *            디렉토리 경로
      * @param connectTimeout
      *            접속대기 제한시간. (단위: ms)
-     * @return
+     *
+     * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 26.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> mkdirs(@NotBlank String directory, @Min(1) int connectTimeout);
 
@@ -629,12 +673,13 @@ public interface IFile {
      *            복사할 파일 경로
      * @param destination
      *            복사될 파일 경로
+     *
      * @return
+     *
      * @throws IOException
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination) throws IOException;
 
@@ -654,12 +699,13 @@ public interface IFile {
      *            이동 후 파일 경로
      * @param overwrite
      *            덮어쓰기 여부.
+     *
      * @return
+     *
      * @throws IOException
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
 
@@ -679,12 +725,13 @@ public interface IFile {
      *            이동 후 파일 경로
      * @param connectTimeout
      *            접속대기 제한시간. (단위: ms)
+     *
      * @return
+     *
      * @throws IOException
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
 
@@ -706,12 +753,13 @@ public interface IFile {
      *            접속대기 제한시간. (단위: ms)
      * @param overwrite
      *            덮어쓰기 여부.
+     *
      * @return
+     *
      * @throws IOException
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException;
 
@@ -727,11 +775,11 @@ public interface IFile {
      *
      * @param filepath
      *            파일 경로
+     *
      * @return
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> rm(@NotBlank String filepath);
 
@@ -749,11 +797,11 @@ public interface IFile {
      *            파일 경로
      * @param connectTimeout
      *            접속대기 제한시간. (단위: ms)
+     *
      * @return
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> rm(@NotBlank String filepath, @Min(1) int connectTimeout);
 

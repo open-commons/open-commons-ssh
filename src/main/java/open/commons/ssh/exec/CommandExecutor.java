@@ -74,7 +74,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * </pre>
      * 
      * @param ssh
-     *            TODO
      *
      * @since 2020. 10. 15.
      */
@@ -83,9 +82,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(int, java.lang.String[])
@@ -140,9 +136,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(java.lang.String[])
@@ -153,9 +146,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 15.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(int, java.lang.String[])
@@ -205,9 +195,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code args})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 15.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(java.lang.String[])
@@ -218,9 +205,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, java.lang.String[])
@@ -274,10 +258,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * 
-     * @throws NullPointerException
-     *             파라미터({@code uuid, cmds 중에 1개라도})가 {@code null}이거나 {@code cmds}에 {@code null}이 포함된 경우 발생.
-     * 
+     *
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier, java.lang.String[])
@@ -314,9 +295,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(java.lang.String[])
@@ -327,9 +305,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code cmds})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(Supplier, java.lang.String[])
@@ -340,9 +315,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code pids})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(int, String...)
@@ -392,9 +364,6 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     }
 
     /**
-     * @throws NullPointerException
-     *             파라미터({@code pids})가 {@code null}이거나 {@code null}을 포함한 경우 발생.
-     * 
      * @since 2020. 10. 16.
      *
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(String...)
@@ -419,12 +388,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @param args
      * 
      * @return
-     * 
-     * @throws NullPointerException
-     *             파라미터({@code cmdTpl, args 중에 1개라도})가 {@code null}이거나 {@code args}에 {@code null}이 포함된 경우 발생.
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("null")
     private String toCommand(String cmdTpl, String... args) {

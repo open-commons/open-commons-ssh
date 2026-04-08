@@ -26,8 +26,11 @@
 
 package open.commons.ssh.forwarding;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import java.util.Objects;
+
+import jakarta.validation.constraints.NotBlank;
+
+import org.jspecify.annotations.Nullable;
 
 /**
  * 
@@ -68,8 +71,14 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
      *
      * @since 2020. 10. 14.
      */
-    public RemotePortForwarding(@NotNull @NotEmpty String remotePortFwdStr) {
+    @SuppressWarnings("null")
+    public RemotePortForwarding(@NotBlank String remotePortFwdStr) {
+        Objects.requireNonNull(remotePortFwdStr);
+
         String[] strs = remotePortFwdStr.split(":");
+        if (strs.length < 3) {
+            throw new IllegalArgumentException("원격포트포워딩 정보가 올바르지 않습니다. 설정: " + remotePortFwdStr);
+        }
 
         this.remotePort = Integer.parseInt(strs[0]);
         this.serviceHost = strs[1];
@@ -78,12 +87,15 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     @Override
-    public int compareTo(RemotePortForwarding o) {
+    public int compareTo(@Nullable RemotePortForwarding o) {
+        if (o == null) {
+            return -1;
+        }
+
         int c = this.remotePort - o.remotePort;
         if (c != 0) {
             return c;
@@ -159,10 +171,14 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
+    // 아래 내용에 적용됨.
+    // - StringBuilder.toString()
+    // [PATCH] [JDK-Null] JDK 표준 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -173,6 +189,7 @@ public class RemotePortForwarding implements Comparable<RemotePortForwarding> {
         builder.append(", servicePort=");
         builder.append(servicePort);
         builder.append("]");
+
         return builder.toString();
     }
 

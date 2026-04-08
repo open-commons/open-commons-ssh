@@ -26,10 +26,14 @@
 
 package open.commons.ssh.file;
 
+import java.util.Objects;
+
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import open.commons.core.concurrent.Mutex;
+import open.commons.core.utils.ObjectUtils;
 
 import com.jcraft.jsch.SftpProgressMonitor;
 
@@ -43,6 +47,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     /** 설정되지 않은 상태의 파일 크기 */
     private static final int INIT_FILE_SIZE = -1;
 
+    @SuppressWarnings("null")
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     /** 읽어올 데이터 경로 */
@@ -60,7 +65,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     /** 진행상태 */
     private boolean status = true;
     /** 메세지 */
-    private String message;
+    private @Nullable String message;
 
     private Mutex mutexUpdate = new Mutex("mutex for 'updated'");
 
@@ -104,6 +109,9 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * @since 2020. 10. 15.
      */
     public TransferProgressMonitor(String source, String destination, long sourcefileSize) {
+        Objects.requireNonNull(source);
+        Objects.requireNonNull(destination);
+
         this.source = source;
         this.destination = destination;
         this.sourcefileSize = sourcefileSize;
@@ -111,7 +119,6 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#count(long)
      */
@@ -133,7 +140,6 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#end()
      */
@@ -182,7 +188,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * 
      * @see #message
      */
-    public String getMessage() {
+    public @Nullable String getMessage() {
         return message;
     }
 
@@ -272,12 +278,17 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String, java.lang.String, long)
      */
+    // 아래 내용에 적용됨.
+    // - public void init(int op, String src, String dest, long max) {
+    // [PATCH] [3rdParty-Null] 외부 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public void init(int op, String src, String dest, long max) {
+        ObjectUtils.requireNonNulls(src, dest);
 
         logger.info("[Begin] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
 
@@ -359,10 +370,14 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
     /**
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */
+    // 아래 내용에 적용됨.
+    // - StringBuilder.toString()
+    // [PATCH] [JDK-Null] JDK 표준 API의 JSpecify 미지원 '우회용' 어노테이션.
+    // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
+    @SuppressWarnings("null")
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -383,6 +398,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
         builder.append(", message=");
         builder.append(message);
         builder.append("]");
+
         return builder.toString();
     }
 
@@ -396,9 +412,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      * 2020. 10. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2020. 10. 19.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void updated() {
         synchronized (this.mutexUpdate) {

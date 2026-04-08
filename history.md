@@ -1,3 +1,7 @@
+[2026/04/08]
+- Updated
+  + 'null' 체크 우회를 '@SuppressWarnings' 변환: 완료
+  
 [2026/04/07]
 - Updated
   + package-info.java 파일 추가

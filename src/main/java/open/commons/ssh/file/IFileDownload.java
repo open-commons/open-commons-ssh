@@ -64,7 +64,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull File destination) throws IOException;
@@ -90,7 +89,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull File destination, boolean overwrite) throws IOException;
@@ -115,7 +113,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout) throws IOException;
@@ -143,7 +140,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
@@ -166,7 +162,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination);
 
@@ -216,7 +211,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, @Min(1) int connectTimeout);
 
@@ -266,7 +260,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull Path destination) throws IOException;
@@ -292,7 +285,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull Path destination, boolean overwrite) throws IOException;
@@ -317,7 +309,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout) throws IOException;
@@ -345,7 +336,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
@@ -368,7 +358,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotBlank String destination) throws IOException;
@@ -393,7 +382,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
@@ -418,7 +406,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException;
@@ -446,7 +433,6 @@ public interface IFileDownload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;

@@ -60,7 +60,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<String>> listPids(int connectTimeout, String... args);
 
@@ -80,10 +79,10 @@ public interface ICommandExecutor {
      *
      * @param args
      *            검색을 위한 설정
+     * 
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #listPids(int, String...)
      */
@@ -114,7 +113,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<String>> listProcesses(int connectTimeout, String... args);
 
@@ -141,7 +139,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 15.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #listProcesses(int, String...)
      */
@@ -165,7 +162,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<Boolean> startProcess(int connectTimeout, String... cmds);
 
@@ -188,8 +184,8 @@ public interface ICommandExecutor {
      *
      * @return
      *
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<String> startProcess(int connectTimeout, Supplier<String> uuid, String... cmds);
 
@@ -209,7 +205,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #startProcess(int, String...)
      */
@@ -232,8 +227,8 @@ public interface ICommandExecutor {
      *
      * @return
      *
+     * 
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<String> startProcess(Supplier<String> uuid, String... cmds);
 
@@ -255,7 +250,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Result<List<String>> stopProcesses(int connectTimeout, String... pids);
 
@@ -275,7 +269,6 @@ public interface ICommandExecutor {
      * @return
      *
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see #stopProcesses(int, String...)
      */

@@ -78,7 +78,6 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getCode() {
         return this.code;
@@ -98,12 +97,12 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public int getFlag() {
         return this.flag;
     }
 
+    @SuppressWarnings("null")
     private static Set<Integer> flags() {
         return Arrays.stream(values()) //
                 .map(e -> e.flag) //
@@ -125,9 +124,13 @@ public enum FileType {
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see SftpATTRS
      */
+    // 아래 내용에 적용됨.
+    // - Optional.get()
+    // [PATCH] [IDE-Null] Eclipse JDT 분석기의 제네릭 & @NullMarked 치환 해석 오류 우회
+    // [TODO] 향후 Eclipse IDE 정적 분석기가 JSpecify 제네릭 치환을 완벽히 지원하면 '제거'
+    @SuppressWarnings("null")
     public static FileType get(final int flag, final int permissions) {
         Optional<FileType> opt = Arrays.stream(values()) //
                 .filter(t -> NULL != t) //
@@ -138,7 +141,6 @@ public enum FileType {
             throw ExceptionUtils.newException(IllegalArgumentException.class, "Unexpected 'flag' & 'permissions' value of 'FileType'. expected: %s, input: %s, permissions: %s",
                     flags(), flag, permissions);
         }
-
         return opt.get();
     }
 }

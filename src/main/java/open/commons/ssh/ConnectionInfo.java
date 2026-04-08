@@ -30,8 +30,7 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 import org.jspecify.annotations.Nullable;
 
@@ -46,24 +45,19 @@ import open.commons.core.utils.StringUtils;
  */
 public class ConnectionInfo implements IConnectionInfo {
     /** 접속 IP 또는 도메인 */
-    @NotNull
-    @NotEmpty
-    @Nullable
-    protected String host;
+    @NotBlank
+    protected @Nullable String host;
+
     /** 접속 포트 */
-    @Min(1)
-    @Max(65535)
-    protected int port;
+    protected @Min(1) @Max(65535) int port;
+
     /** 사용자 */
-    @NotNull
-    @NotEmpty
-    @Nullable
-    protected String username;
+    @NotBlank
+    protected @Nullable String username;
+
     /** 비밀번호 */
-    @NotNull
-    @NotEmpty
-    @Nullable
-    protected String password;
+    @NotBlank
+    protected @Nullable String password;
 
     /**
      * 
@@ -134,7 +128,7 @@ public class ConnectionInfo implements IConnectionInfo {
      *
      * @since 2020. 11. 26.
      */
-    public void setHost(@NotNull @NotEmpty String host) {
+    public void setHost(@NotBlank String host) {
         Objects.requireNonNull(host);
 
         this.host = host;
@@ -146,7 +140,7 @@ public class ConnectionInfo implements IConnectionInfo {
      *
      * @since 2020. 11. 26.
      */
-    public void setPassword(@NotNull @NotEmpty String password) {
+    public void setPassword(@NotBlank String password) {
         Objects.requireNonNull(password);
 
         this.password = password;
@@ -168,7 +162,7 @@ public class ConnectionInfo implements IConnectionInfo {
      *
      * @since 2020. 11. 26.
      */
-    public void setUsername(@NotNull @NotEmpty String username) {
+    public void setUsername(@NotBlank String username) {
         Objects.requireNonNull(username);
 
         this.username = username;
@@ -187,7 +181,6 @@ public class ConnectionInfo implements IConnectionInfo {
      * @return
      *
      * @since 2020. 11. 26.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

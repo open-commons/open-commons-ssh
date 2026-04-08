@@ -63,7 +63,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination);
 
@@ -86,7 +85,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination, int connectTimeout);
 
@@ -107,7 +105,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
     Result<Boolean> upload(@NotNull File source, @NotBlank String destination) throws IOException;
@@ -131,7 +128,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws FileNotFoundException
      */
     Result<Boolean> upload(@NotNull File source, @NotBlank String destination, int connectTimeout) throws IOException;
@@ -153,7 +149,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination);
 
@@ -202,7 +197,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout);
 
@@ -251,7 +245,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(@NotNull Path source, @NotBlank String destination) throws IOException;
@@ -275,7 +268,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(@NotNull Path source, @NotBlank String destination, int connectTimeout) throws IOException;
@@ -297,7 +289,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(@NotBlank String source, @NotBlank String destination) throws IOException;
@@ -321,7 +312,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws IOException
      */
     Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
@@ -342,7 +332,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination);
 
@@ -365,7 +354,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, Charset charset);
 
@@ -388,7 +376,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout);
 
@@ -413,7 +400,6 @@ public interface IFileUpload {
      * @return
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout, Charset charset);
 

@@ -26,14 +26,18 @@
 
 package open.commons.ssh;
 
+import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import org.jspecify.annotations.Nullable;
+
+import open.commons.core.utils.ObjectUtils;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
@@ -96,7 +100,9 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      *
      * @since 2020. 10. 14.
      */
-    public SshConnection(@NotNull @NotEmpty String username, @NotNull @NotEmpty String password, @NotNull @NotEmpty String host, @Min(1) @Max(65535) int port) {
+    public SshConnection(@NotBlank String username, @NotBlank String password, @NotBlank String host, @Min(1) @Max(65535) int port) {
+        ObjectUtils.requireNonNulls(username, password, host);
+
         this.username = username;
         this.password = password;
         this.host = host;
@@ -105,7 +111,6 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
 
     /**
      * @since 2020. 10. 16.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.AutoCloseable#close()
      */
@@ -130,7 +135,6 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * @throws JSchException
      *
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("null")
     public Session createSession() throws JSchException {
@@ -242,28 +246,52 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
         return username;
     }
 
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2026. 4. 8.		parkjunhong77@gmail.com			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param session
+     * @param type
+     * 
+     * @return
+     * 
+     * @throws JSchException
+     *
+     * @since 2020. 10. 14.
+     */
     @SuppressWarnings("unchecked")
     public <T extends Channel> T openChannel(Session session, ChannelType type) throws JSchException {
-        switch (type) {
-            case AUTH_AGENT_AT_OPENSSH_DOT_COM:
-            case DIRECT_TCPIP:
-            case EXEC:
-            case FORWARDED_TCPIP:
-            case SESSION:
-            case SFTP:
-            case SHELL:
-            case SUBSYSTEM:
-            case X11:
-                return (T) session.openChannel(type.get());
-            default:
-                // unreachable code
-                throw new IllegalArgumentException("Not Supoorted Type=" + type);
-        }
+        Objects.requireNonNull(session);
+        Objects.requireNonNull(type);
+
+        return (T) session.openChannel(requireSupportedType(type).get());
+    }
+
+    private ChannelType requireSupportedType(ChannelType type) {
+        return switch (type) {
+            case AUTH_AGENT_AT_OPENSSH_DOT_COM //
+                    , DIRECT_TCPIP //
+                    , EXEC //
+                    , FORWARDED_TCPIP //
+                    , SESSION //
+                    , SHELL //
+                    , SUBSYSTEM //
+                    , X11 //
+                    -> type;
+            default -> throw new IllegalArgumentException("Not Supoorted Type=" + type);
+        };
     }
 
     /**
      * @since 2020. 10. 14.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

@@ -62,8 +62,6 @@ public interface SftpFunction<T, R> {
      * @param after
      *            the function to apply after this function is applied
      * @return a composed function that first applies this function and then applies the {@code after} function
-     * @throws NullPointerException
-     *             if after is null
      * 
      * @since 2020. 10. 15
      * @see 0.1.0
