@@ -185,7 +185,6 @@ public interface IFileDownload {
      *
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see AutoCloseable
      */
@@ -236,7 +235,6 @@ public interface IFileDownload {
      *
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see AutoCloseable
      */

@@ -480,7 +480,6 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, boolean)
      */
@@ -502,7 +501,6 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, int, boolean)
      */
@@ -1056,7 +1054,6 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, boolean)
      */
@@ -1078,7 +1075,6 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2025. 7. 23.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int, boolean)
      */

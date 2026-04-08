@@ -184,7 +184,6 @@ public interface ICommandExecutor {
      *
      * @return
      *
-     * 
      * @since 2020. 10. 16.
      */
     public Result<String> startProcess(int connectTimeout, Supplier<String> uuid, String... cmds);
@@ -227,7 +226,6 @@ public interface ICommandExecutor {
      *
      * @return
      *
-     * 
      * @since 2020. 10. 16.
      */
     public Result<String> startProcess(Supplier<String> uuid, String... cmds);
