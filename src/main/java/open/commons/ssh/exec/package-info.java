@@ -1,6 +1,11 @@
 /**
- * 이 패키지 내의 모든 클래스, 인터페이스, 메서드 파라미터 및 반환값은<br>
- * 명시적으로 {@link org.jspecify.annotations.Nullable} 붙지 않는 한 기본적으로 <code>Non-Null</code>로 취급됩니다.
- */
+ * Open Commons SSH Library
+* <p>
+* <b>[Nullability Policy]</b><br>
+* 이 패키지 하위의 모든 API는 JSpecify의 {@code @NullMarked} 정책을 따릅니다.<br>
+* 별도로 {@code @Nullable}이 명시되지 않은 모든 파라미터는 {@code null}을 허용하지 않으며,<br>
+* 위반 시 런타임에 {@link NullPointerException}이 발생합니다.
+* </p>
+*/
 @org.jspecify.annotations.NullMarked
 package open.commons.ssh.exec;
