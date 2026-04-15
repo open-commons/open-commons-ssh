@@ -36,9 +36,9 @@ import java.util.function.Supplier;
 
 import open.commons.core.Result;
 import open.commons.core.text.NamedTemplate;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.CollectionUtils;
 import open.commons.core.utils.IOUtils;
-import open.commons.core.utils.ObjectUtils;
 import open.commons.ssh.ChannelType;
 import open.commons.ssh.SshClient;
 import open.commons.ssh.SshConnection;
@@ -87,7 +87,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @see open.commons.ssh.exec.ICommandExecutor#listPids(int, java.lang.String[])
      */
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) args);
+    // - AssertUtils2.notNulls((Object[]) args);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     // 아래 내용에 적용됨.
@@ -97,7 +97,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     @SuppressWarnings("null")
     @Override
     public Result<List<String>> listPids(int connectTimeout, String... args) {
-        ObjectUtils.requireNonNulls((Object[]) args);
+        AssertUtils2.notNulls((Object[]) args);
 
         logger.debug("connect-timeout={}, arguments={}", connectTimeout, Arrays.toString(args));
 
@@ -152,7 +152,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      */
 
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) args);
+    // - AssertUtils2.notNulls((Object[]) args);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     // 아래 내용에 적용됨.
@@ -162,7 +162,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     @SuppressWarnings("null")
     @Override
     public Result<List<String>> listProcesses(int connectTimeout, String... args) {
-        ObjectUtils.requireNonNulls((Object[]) args);
+        AssertUtils2.notNulls((Object[]) args);
 
         logger.debug("connect-timeout={}, arguments={}", connectTimeout, Arrays.toString(args));
 
@@ -210,7 +210,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, java.lang.String[])
      */
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) cmds);
+    // - AssertUtils2.notNulls((Object[]) cmds);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     // 아래 내용에 적용됨.
@@ -220,7 +220,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     @SuppressWarnings("null")
     @Override
     public Result<Boolean> startProcess(int connectTimeout, String... cmds) {
-        ObjectUtils.requireNonNulls((Object[]) cmds);
+        AssertUtils2.notNulls((Object[]) cmds);
 
         logger.debug("connect-timeout={}, command={}", connectTimeout, Arrays.toString(cmds));
 
@@ -264,14 +264,14 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier, java.lang.String[])
      */
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) cmds);
+    // - AssertUtils2.notNulls((Object[]) cmds);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     @SuppressWarnings("null")
     @Override
     public Result<String> startProcess(int connectTimeout, Supplier<String> uuid, String... cmds) {
         Objects.requireNonNull(uuid);
-        ObjectUtils.requireNonNulls((Object[]) cmds);
+        AssertUtils2.notNulls((Object[]) cmds);
 
         Result<Boolean> resultStart = startProcess(connectTimeout, cmds);
         if (!resultStart.getResult()) {
@@ -320,7 +320,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      * @see open.commons.ssh.exec.ICommandExecutor#stopProcesses(int, String...)
      */
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) pids);
+    // - AssertUtils2.notNulls((Object[]) pids);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     // 아래 내용에 적용됨.
@@ -330,7 +330,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     @SuppressWarnings("null")
     @Override
     public Result<List<String>> stopProcesses(int connectTimeout, String... pids) {
-        ObjectUtils.requireNonNulls((Object[]) pids);
+        AssertUtils2.notNulls((Object[]) pids);
 
         logger.debug("connect-timeout={}, pids={}", connectTimeout, Arrays.toString(pids));
 
@@ -394,7 +394,7 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     @SuppressWarnings("null")
     private String toCommand(String cmdTpl, String... args) {
         Objects.requireNonNull(cmdTpl);
-        ObjectUtils.requireNonNulls((Object[]) args);
+        AssertUtils2.notNulls((Object[]) args);
 
         String argStr = String.join(" ", args);
         return NamedTemplate.format(cmdTpl, "args", argStr);

@@ -37,7 +37,7 @@ import jakarta.validation.constraints.NotNull;
 
 import org.jspecify.annotations.Nullable;
 
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.AssertUtils2;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
@@ -101,7 +101,7 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * @since 2020. 10. 14.
      */
     public SshConnection(@NotBlank String username, @NotBlank String password, @NotBlank String host, @Min(1) @Max(65535) int port) {
-        ObjectUtils.requireNonNulls(username, password, host);
+        AssertUtils2.notNulls(username, password, host);
 
         this.username = username;
         this.password = password;

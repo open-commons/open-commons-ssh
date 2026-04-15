@@ -39,7 +39,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.AssertUtils2;
-import open.commons.core.utils.ObjectUtils;
 import open.commons.ssh.utils.SessionUtils;
 
 /**
@@ -151,7 +150,7 @@ public class SshTunnelingInfo {
      * @since 2020. 10. 14.
      */
     // 아래 내용에 적용됨.
-    // - ObjectUtils.requireNonNulls((Object[]) remotes);
+    // - AssertUtils2.notNulls((Object[]) remotes);
     // [PATCH] [Array-Null] 자바 배열(Array)의 가변성 및 와일드카드 제약으로 인한 IDE 분석기 오탐 우회
     // [TODO] 향후 IDE의 배열 데이터 흐름 분석이 고도화되거나 JSpecify가 완벽히 지원되면 '제거'
     // 아래 내용에 적용됨.
@@ -160,7 +159,7 @@ public class SshTunnelingInfo {
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     public void addRemotePortForwardings(RemotePortForwarding... remotes) {
-        ObjectUtils.requireNonNulls((Object[]) remotes);
+        AssertUtils2.notNulls((Object[]) remotes);
 
         this.addRemotePortForwardings(Arrays.asList(remotes));
     }

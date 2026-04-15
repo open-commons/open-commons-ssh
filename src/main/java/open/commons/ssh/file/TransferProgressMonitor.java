@@ -33,7 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import open.commons.core.concurrent.Mutex;
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.AssertUtils2;
 
 import com.jcraft.jsch.SftpProgressMonitor;
 
@@ -288,7 +288,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     @SuppressWarnings("null")
     @Override
     public void init(int op, String src, String dest, long max) {
-        ObjectUtils.requireNonNulls(src, dest);
+        AssertUtils2.notNulls(src, dest);
 
         logger.info("[Begin] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
 

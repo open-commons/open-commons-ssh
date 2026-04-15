@@ -36,8 +36,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import open.commons.core.Result;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.IOUtils;
-import open.commons.core.utils.ObjectUtils;
 import open.commons.ssh.function.JSchFunction;
 import open.commons.ssh.function.SftpFunction;
 
@@ -175,7 +175,7 @@ public abstract class SshClient implements AutoCloseable {
     @SuppressWarnings("null")
     protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
             Function<Throwable, Result<R>> onError) {
-        ObjectUtils.requireNonNulls(type, action, onError);
+        AssertUtils2.notNulls(type, action, onError);
 
         @Nullable
         T channel = null;
