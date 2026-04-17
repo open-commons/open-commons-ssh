@@ -130,7 +130,7 @@ public class SshTunnelingInfo {
      * @since 2020. 10. 14.
      */
     public void addRemotePortForwardings(Collection<RemotePortForwarding> remotes) {
-        AssertUtils2.notExistNull(remotes);
+        AssertUtils2.notNulls(remotes);
 
         this.remotePortForwardings.addAll(remotes);
     }
@@ -286,7 +286,7 @@ public class SshTunnelingInfo {
      * @see #remotePortForwardings
      */
     public void setRemotePortForwardings(Set<RemotePortForwarding> remotePortForwardings) {
-        AssertUtils2.notExistNull(remotePortForwardings);
+        AssertUtils2.notNulls(remotePortForwardings);
 
         this.remotePortForwardings = remotePortForwardings;
     }

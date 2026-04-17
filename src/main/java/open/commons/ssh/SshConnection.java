@@ -101,7 +101,9 @@ public class SshConnection implements IConnectionInfo, AutoCloseable {
      * @since 2020. 10. 14.
      */
     public SshConnection(@NotBlank String username, @NotBlank String password, @NotBlank String host, @Min(1) @Max(65535) int port) {
-        AssertUtils2.notNulls(username, password, host);
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
 
         this.username = username;
         this.password = password;
