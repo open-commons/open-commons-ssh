@@ -84,7 +84,8 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -115,7 +116,8 @@ public interface IFileDownload {
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout)
+            throws IOException;
 
     /**
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -135,14 +137,16 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException;
 
     /***
      * 원격경로에 있는 데이터를 지정한 대상에 저장합니다.<br>
@@ -238,7 +242,8 @@ public interface IFileDownload {
      * 
      * @see AutoCloseable
      */
-    Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, @Min(1) int connectTimeout, boolean autoClose);
+    Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, @Min(1) int connectTimeout,
+            boolean autoClose);
 
     /***
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -278,7 +283,8 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -309,7 +315,8 @@ public interface IFileDownload {
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout)
+            throws IOException;
 
     /**
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -329,14 +336,16 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException;
 
     /***
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -376,13 +385,15 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      * @return
      *
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite)
+            throws IOException;
 
     /**
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -406,7 +417,8 @@ public interface IFileDownload {
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout)
+            throws IOException;
 
     /**
      * 원격경로에 있는 데이터를 지정한 로컬 경로에 저장한다. <br>
@@ -426,13 +438,15 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는
+     *            {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException;
+    Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException;
 
 }

@@ -127,9 +127,11 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
 
         synchronized (this.mutexUpdate) {
             this.totalCount += count;
-            this.rate = this.sourcefileSize == INIT_FILE_SIZE || this.sourcefileSize < 1 ? -1 : (double) this.totalCount / this.sourcefileSize;
+            this.rate = this.sourcefileSize == INIT_FILE_SIZE || this.sourcefileSize < 1 ? -1
+                    : (double) this.totalCount / this.sourcefileSize;
 
-            logger.debug(String.format("[%sing] %,10d / %,10d / %,10d / %.4f.", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
+            logger.debug(String.format("[%sing] %,10d / %,10d / %,10d / %.4f.",
+                    GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
                     , count, this.totalCount, this.sourcefileSize, this.rate));
 
             this.mutexUpdate.notifyAll();
@@ -145,9 +147,11 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
      */
     @Override
     public void end() {
-        logger.info(String.format("[%sed] %,10d / %,10d / %.4f.", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
+        logger.info(String.format("[%sed] %,10d / %,10d / %.4f.",
+                GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None" //
                 , this.totalCount, this.sourcefileSize, this.rate));
-        logger.info("[Finished] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
+        logger.info("[Finished] {}. source={}, destination={}",
+                GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
     }
 
     /**
@@ -279,7 +283,8 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     /**
      * @since 2020. 10. 15.
      *
-     * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String, java.lang.String, long)
+     * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String,
+     *      java.lang.String, long)
      */
     // 아래 내용에 적용됨.
     // - public void init(int op, String src, String dest, long max) {
@@ -290,7 +295,8 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     public void init(int op, String src, String dest, long max) {
         AssertUtils2.notNulls(src, dest);
 
-        logger.info("[Begin] {}. source={}, destination={}", GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
+        logger.info("[Begin] {}. source={}, destination={}",
+                GET == this.op ? "Download" : PUT == this.op ? "Upload" : "None", this.source, this.destination);
 
         this.op = op;
         switch (op) {

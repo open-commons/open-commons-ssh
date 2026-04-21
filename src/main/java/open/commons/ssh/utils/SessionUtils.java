@@ -51,11 +51,13 @@ public class SessionUtils {
      * @param p
      *            SSH Server port
      */
-    public static final TripleFunction<String, String, Integer, String> GENERATE_SESSION_KEY = (u, h, p) -> String.join(":", u, h, String.valueOf(p));
+    public static final TripleFunction<String, String, Integer, String> GENERATE_SESSION_KEY = (u, h, p) -> String
+            .join(":", u, h, String.valueOf(p));
     /**
      * @see #GENERATE_SESSION_KEY
      */
-    public static final Function<Session, String> GET_SESSION_KEY = s -> GENERATE_SESSION_KEY.apply(s.getUserName(), s.getHost(), s.getPort());
+    public static final Function<Session, String> GET_SESSION_KEY = s -> GENERATE_SESSION_KEY.apply(s.getUserName(),
+            s.getHost(), s.getPort());
 
     /**
      * Remote Port Forwarding 식별정보를 제공한다.
@@ -69,7 +71,8 @@ public class SessionUtils {
      * 
      * @since 2020.10.14
      */
-    public static final TripleFunction<Integer, String, Integer, String> REMOTE_PORT_FORWARDING_KEYGEN = (r, h, p) -> String.join(":", String.valueOf(r), h, String.valueOf(p));
+    public static final TripleFunction<Integer, String, Integer, String> REMOTE_PORT_FORWARDING_KEYGEN = (r, h,
+            p) -> String.join(":", String.valueOf(r), h, String.valueOf(p));
 
     // prevent to create an instance.
     private SessionUtils() {

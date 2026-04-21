@@ -224,7 +224,8 @@ public interface IFileUpload {
      * 
      * @see AutoCloseable
      */
-    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout, boolean autoClose);
+    Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout,
+            boolean autoClose);
 
     /***
      * 로컬 데이터를 지정한 원격경로에 저장한다. <br>
@@ -312,7 +313,8 @@ public interface IFileUpload {
      * @since 2020. 10. 14.
      * @throws IOException
      */
-    Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException;
+    Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, int connectTimeout)
+            throws IOException;
 
     /**
      * 로컬 데이터를 지정한 원격경로에 저장한다.<br>
@@ -399,6 +401,7 @@ public interface IFileUpload {
      *
      * @since 2020. 10. 14.
      */
-    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout, Charset charset);
+    Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, int connectTimeout,
+            Charset charset);
 
 }

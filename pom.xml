@@ -71,7 +71,7 @@
       <artifactId>disruptor</artifactId>
     </dependency>
     <!-- end: log4j2 -->
-    
+
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
@@ -83,10 +83,10 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j2-impl</artifactId>
-    </dependency>    
+    </dependency>
     <!-- <<< end: logging -->
     <!-- ********************** -->
-    
+
     <!-- ************** -->
     <!-- >>> begin: open.commons -->
     <!-- begin: open.commons.core -->
@@ -108,16 +108,16 @@
     <!-- <version>${jsh.version}</version> -->
     <!-- </dependency> -->
     <!-- bug fixed version -->
-<!--    <dependency>-->
-<!--      <groupId>io.github.open-commons-ext</groupId>-->
-<!--      <artifactId>com.craft.jsch</artifactId>-->
-<!--      <version>${jsch-ex.version}</version>-->
-<!--    </dependency>-->
-<dependency>
-    <groupId>com.github.mwiede</groupId>
-    <artifactId>jsch</artifactId>
-    <version>2.28.0</version>
-</dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>io.github.open-commons-ext</groupId>-->
+    <!--      <artifactId>com.craft.jsch</artifactId>-->
+    <!--      <version>${jsch-ex.version}</version>-->
+    <!--    </dependency>-->
+    <dependency>
+      <groupId>com.github.mwiede</groupId>
+      <artifactId>jsch</artifactId>
+      <version>2.28.0</version>
+    </dependency>
     <!-- end: ssh client -->
     <!-- ************** -->
 
@@ -176,40 +176,40 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-<!--        <configuration>-->
-<!--        </configuration>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>attach-sources</id>-->
-<!--            <goals>-->
-<!--              <goal>jar</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
+        <!--        <configuration>-->
+        <!--        </configuration>-->
+        <!--        <executions>-->
+        <!--          <execution>-->
+        <!--            <id>attach-sources</id>-->
+        <!--            <goals>-->
+        <!--              <goal>jar</goal>-->
+        <!--            </goals>-->
+        <!--          </execution>-->
+        <!--        </executions>-->
       </plugin>
       <!-- <<< end: source -->
       <!-- >>> begin: javadoc -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-<!--        <configuration>-->
-<!--          <show>private</show>-->
-<!--          <nohelp>true</nohelp>-->
-<!--          <additionalOptions>-->
-<!--            <additionalOption>-Xdoclint:none</additionalOption>-->
-<!--          </additionalOptions>-->
-<!--          <charset>${encoding}</charset>-->
-<!--          <docencoding>${encoding}</docencoding>-->
-<!--          <encoding>${encoding}</encoding>-->
-<!--        </configuration>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>attach-javadocs</id>-->
-<!--            <goals>-->
-<!--              <goal>jar</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
+        <!--        <configuration>-->
+        <!--          <show>private</show>-->
+        <!--          <nohelp>true</nohelp>-->
+        <!--          <additionalOptions>-->
+        <!--            <additionalOption>-Xdoclint:none</additionalOption>-->
+        <!--          </additionalOptions>-->
+        <!--          <charset>${encoding}</charset>-->
+        <!--          <docencoding>${encoding}</docencoding>-->
+        <!--          <encoding>${encoding}</encoding>-->
+        <!--        </configuration>-->
+        <!--        <executions>-->
+        <!--          <execution>-->
+        <!--            <id>attach-javadocs</id>-->
+        <!--            <goals>-->
+        <!--              <goal>jar</goal>-->
+        <!--            </goals>-->
+        <!--          </execution>-->
+        <!--        </executions>-->
       </plugin>
       <!-- <<< end: javadoc -->
 
@@ -217,28 +217,28 @@
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-<!--        <version>0.7.0</version>-->
-<!--        <extensions>true</extensions>-->
-<!--        <configuration>-->
-<!--          <publishingServerId>maven-central</publishingServerId>-->
-<!--           autoPublish>true</autoPublish>-->
-<!--             		<waitUntil>published</waitUntil -->
-<!--        </configuration>-->
+        <!--        <version>0.7.0</version>-->
+        <!--        <extensions>true</extensions>-->
+        <!--        <configuration>-->
+        <!--          <publishingServerId>maven-central</publishingServerId>-->
+        <!--           autoPublish>true</autoPublish>-->
+        <!--             		<waitUntil>published</waitUntil -->
+        <!--        </configuration>-->
       </plugin>
       <!-- GPG signature plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
-<!--        <version>1.5</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>sign-artifacts</id>-->
-<!--            <phase>verify</phase>-->
-<!--            <goals>-->
-<!--              <goal>sign</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
+        <!--        <version>1.5</version>-->
+        <!--        <executions>-->
+        <!--          <execution>-->
+        <!--            <id>sign-artifacts</id>-->
+        <!--            <phase>verify</phase>-->
+        <!--            <goals>-->
+        <!--              <goal>sign</goal>-->
+        <!--            </goals>-->
+        <!--          </execution>-->
+        <!--        </executions>-->
       </plugin>
     </plugins>
   </build>

@@ -138,7 +138,8 @@ public enum FileType {
                 .findAny();
 
         if (!opt.isPresent()) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "Unexpected 'flag' & 'permissions' value of 'FileType'. expected: %s, input: %s, permissions: %s",
+            throw ExceptionUtils.newException(IllegalArgumentException.class,
+                    "Unexpected 'flag' & 'permissions' value of 'FileType'. expected: %s, input: %s, permissions: %s",
                     flags(), flag, permissions);
         }
         return opt.get();

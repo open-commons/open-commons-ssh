@@ -125,8 +125,8 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      */
     @SuppressWarnings("null")
-    protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, JSchFunction<T, Result<R>> action,
-            Function<Throwable, Result<R>> onError) {
+    protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout,
+            boolean autoConnect, JSchFunction<T, Result<R>> action, Function<Throwable, Result<R>> onError) {
         @Nullable
         T channel = null;
         try {
@@ -173,8 +173,8 @@ public abstract class SshClient implements AutoCloseable {
      * @since 2020. 10. 15.
      */
     @SuppressWarnings("null")
-    protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout, boolean autoConnect, SftpFunction<T, Result<R>> action,
-            Function<Throwable, Result<R>> onError) {
+    protected <T extends Channel, R> Result<R> executeOnChannel(ChannelType type, int connectTimeout,
+            boolean autoConnect, SftpFunction<T, Result<R>> action, Function<Throwable, Result<R>> onError) {
         AssertUtils2.notNulls(type, action, onError);
 
         @Nullable
@@ -348,7 +348,8 @@ public abstract class SshClient implements AutoCloseable {
      *
      * @since 2020. 10. 15.
      */
-    protected <T extends @Nullable Channel> @Nullable T openChannel(ChannelType type, int connectTimeout, boolean channelAutoConnect) throws JSchException {
+    protected <T extends @Nullable Channel> @Nullable T openChannel(ChannelType type, int connectTimeout,
+            boolean channelAutoConnect) throws JSchException {
         Objects.requireNonNull(type);
 
         Session session = getSession(true, connectTimeout);

@@ -114,7 +114,8 @@ public enum ChannelType {
             }
         }
 
-        throw new IllegalArgumentException("Unexpected 'type' value of 'ChannelType'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
+        throw new IllegalArgumentException("Unexpected 'type' value of 'ChannelType'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
     }
 
     private static List<String> values0() {

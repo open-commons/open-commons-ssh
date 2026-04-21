@@ -84,7 +84,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     /**
      * @since 2020. 10. 16.
      *
-     * @see open.commons.ssh.exec.ICommandExecutor#listPids(int, java.lang.String[])
+     * @see open.commons.ssh.exec.ICommandExecutor#listPids(int,
+     *      java.lang.String[])
      */
     // 아래 내용에 적용됨.
     // - AssertUtils2.notNulls((Object[]) args);
@@ -148,7 +149,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(int, java.lang.String[])
+     * @see open.commons.ssh.exec.ICommandExecutor#listProcesses(int,
+     *      java.lang.String[])
      */
 
     // 아래 내용에 적용됨.
@@ -207,7 +209,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     /**
      * @since 2020. 10. 16.
      *
-     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, java.lang.String[])
+     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int,
+     *      java.lang.String[])
      */
     // 아래 내용에 적용됨.
     // - AssertUtils2.notNulls((Object[]) cmds);
@@ -252,7 +255,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         };
 
         return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
-            logger.error("프로세스 실행을 실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout, Arrays.toString(cmds), e);
+            logger.error("프로세스 실행을 실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout,
+                    Arrays.toString(cmds), e);
             return new Result<Boolean>().setMessage("프로세스 실행을 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
@@ -261,7 +265,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
      *
      * @since 2020. 10. 16.
      *
-     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier, java.lang.String[])
+     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(int, Supplier,
+     *      java.lang.String[])
      */
     // 아래 내용에 적용됨.
     // - AssertUtils2.notNulls((Object[]) cmds);
@@ -307,7 +312,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
     /**
      * @since 2020. 10. 16.
      *
-     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(Supplier, java.lang.String[])
+     * @see open.commons.ssh.exec.ICommandExecutor#startProcess(Supplier,
+     *      java.lang.String[])
      */
     @Override
     public Result<String> startProcess(Supplier<String> uuid, String... cmds) {
@@ -358,7 +364,8 @@ public class CommandExecutor extends SshClient implements ICommandExecutor {
         };
 
         return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
-            logger.error("프로세스 종료를  실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout, Arrays.toString(pids), e);
+            logger.error("프로세스 종료를  실패하였습니다. connection={}, connect-timeout={}, command={}", this.ssh, connectTimeout,
+                    Arrays.toString(pids), e);
             return new Result<List<String>>().setMessage("프로세스 종료를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }

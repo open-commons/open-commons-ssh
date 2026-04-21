@@ -126,7 +126,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @version 0.2.0
      */
     @SuppressWarnings("null")
-    private Result<Boolean> changeLocation(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout, boolean overwrite, final boolean isCopy) {
+    private Result<Boolean> changeLocation(@NotBlank String source, @NotBlank String destination,
+            @Min(1) int connectTimeout, boolean overwrite, final boolean isCopy) {
         Objects.requireNonNull(source);
         Objects.requireNonNull(destination);
 
@@ -145,7 +146,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         {
             Result<FileType> resultSrcFileType = getFileType(source, connectTimeout);
             srcFileType = resultSrcFileType.getData();
-            if (resultSrcFileType.isError() || (srcFileType != FileType.REGULAR_FILE && srcFileType != FileType.DIRECTORY)) {
+            if (resultSrcFileType.isError()
+                    || (srcFileType != FileType.REGULAR_FILE && srcFileType != FileType.DIRECTORY)) {
                 return Result.error("파일유형=%s, 원인=%s", srcFileType, resultSrcFileType.getMessage());
             }
         }
@@ -153,7 +155,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         // #2. destination 타입 확인
         Result<FileType> resultDstFileType = getFileType(destination, connectTimeout);
         FileType dstFileType = resultDstFileType.getData();
-        if (resultDstFileType.isError() || (dstFileType != FileType.REGULAR_FILE && dstFileType != FileType.DIRECTORY)) {
+        if (resultDstFileType.isError()
+                || (dstFileType != FileType.REGULAR_FILE && dstFileType != FileType.DIRECTORY)) {
             return Result.error("파일유형=%s, 원인=%s", dstFileType, resultDstFileType.getMessage());
         }
 
@@ -228,7 +231,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * 
      * @since 2020. 10. 26.
      *
-     * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int, int)
+     * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int,
+     *      int)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -257,11 +261,13 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
             updateProgressState(true,
-                    String.format("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, connect-timeout=%,d", this.ssh, filepath, permission, connectTimeout));
+                    String.format("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, connect-timeout=%,d",
+                            this.ssh, filepath, permission, connectTimeout));
 
-            logger.error("파일/디렉토리 권한 설정을 실패하였습니다. connection={}, filepath={}, mod={}, connect-timeout={}", this.ssh, filepath, permission,
-                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
-            return new Result<LsEntry>().setMessage("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, 원인=%s", this.ssh, filepath, permission, e.getMessage());
+            logger.error("파일/디렉토리 권한 설정을 실패하였습니다. connection={}, filepath={}, mod={}, connect-timeout={}", this.ssh,
+                    filepath, permission, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<LsEntry>().setMessage("파일/디렉토리 권한 설정을 실패하였습니다. connection=%s, filepath=%s, mod=%s, 원인=%s",
+                    this.ssh, filepath, permission, e.getMessage());
         });
     }
 
@@ -283,11 +289,13 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
+     *      boolean)
      * @see #copy(String, String, int, boolean)
      */
     @Override
-    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException {
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, boolean overwrite)
+            throws IOException {
         return copy(source, destination, DEFAULT_CONNECT_TIMEOUT, overwrite);
     }
 
@@ -296,11 +304,13 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
+     *      int)
      * @see #copy(String, String, int, boolean)
      */
     @Override
-    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException {
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout)
+            throws IOException {
         return copy(source, destination, connectTimeout, false);
     }
 
@@ -309,11 +319,14 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
+     *      int, boolean)
      */
     @Override
-    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException {
-        logger.debug("[copy] source={}, destination={}, connection-timeout={}ms, overwrite={}", source, destination, connectTimeout, overwrite);
+    public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout,
+            boolean overwrite) throws IOException {
+        logger.debug("[copy] source={}, destination={}, connection-timeout={}ms, overwrite={}", source, destination,
+                connectTimeout, overwrite);
         return changeLocation(source, destination, connectTimeout, overwrite, true);
     }
 
@@ -379,8 +392,10 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
-            return new Result<Boolean>().setMessage("파일 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh, filepath, e.getMessage());
+            logger.error("파일 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("파일 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh,
+                    filepath, e.getMessage());
         });
     }
 
@@ -417,15 +432,18 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("디렉토리 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
-            return new Result<Boolean>().setMessage("디렉토리 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh, filepath, e.getMessage());
+            logger.error("디렉토리 삭제를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage("디렉토리 삭제를 실패하였습니다. connection=%s, filepath=%s, 원인=%s", this.ssh,
+                    filepath, e.getMessage());
         });
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.File)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull File destination) throws IOException {
@@ -435,27 +453,32 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.File, boolean)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, boolean overwrite)
+            throws IOException {
         return download(source, destination, DEFAULT_CONNECT_TIMEOUT, overwrite);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.File, int)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout)
+            throws IOException {
         return download(source, destination, connectTimeout, true);
     }
 
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.File, int, boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.get(...)
@@ -463,14 +486,16 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException {
         return download(source, Paths.get(destination.toURI()), connectTimeout, overwrite);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.OutputStream)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination) {
@@ -481,7 +506,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.OutputStream, boolean)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, boolean autoClose) {
@@ -491,10 +517,12 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.OutputStream, int)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, @Min(1) int connectTimeout) {
+    public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination,
+            @Min(1) int connectTimeout) {
         return download(source, destination, connectTimeout, true);
     }
 
@@ -502,7 +530,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.io.OutputStream, int, boolean)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -510,7 +539,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, @Min(1) int connectTimeout, boolean autoClose) {
+    public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination,
+            @Min(1) int connectTimeout, boolean autoClose) {
         SftpFunction<ChannelSftp, Result<Boolean>> action = channel -> {
             try {
                 channel.get(source, destination, this.progressMonitor, ChannelSftp.OVERWRITE, 0);
@@ -519,7 +549,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 throw e;
             } finally {
                 if (autoClose) {
-                    // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(parkjunhong77@gmail.com)
+                    // PATCH [2020. 12. 24.]: 자원 해제 |
+                    // Park_Jun_Hong_(parkjunhong77@gmail.com)
                     IOUtils.close(destination);
                 }
             }
@@ -527,10 +558,11 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
             updateProgressState(true,
-                    String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d", this.ssh, source, destination, connectTimeout));
+                    String.format("파일 다운로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d",
+                            this.ssh, source, destination, connectTimeout));
 
-            logger.error("파일 다운로드를 실패하였습니다. connection={}, source={}, destination={}, connect-timeout={}", this.ssh, source, destination,
-                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            logger.error("파일 다운로드를 실패하였습니다. connection={}, source={}, destination={}, connect-timeout={}", this.ssh,
+                    source, destination, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<Boolean>().setMessage("파일 다운로드를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
@@ -538,7 +570,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.nio.file.Path)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull Path destination) throws IOException {
@@ -548,27 +581,32 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.nio.file.Path, boolean)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, boolean overwrite)
+            throws IOException {
         return download(source, destination, DEFAULT_CONNECT_TIMEOUT, overwrite);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.nio.file.Path, int)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout)
+            throws IOException {
         return download(source, destination, connectTimeout, true);
     }
 
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.nio.file.Path, int, boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.newOutputStream(...)
@@ -576,14 +614,16 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(destination);
 
         // #1. 저장할 디렉토리 확인
         Path parent = destination.getParent();
         if (parent == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "잘못된 파일경로 입니다. destination=%s", destination.toString());
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "잘못된 파일경로 입니다. destination=%s",
+                    destination.toString());
         }
 
         if (!Files.exists(parent)) {
@@ -595,7 +635,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
             throw new FileAlreadyExistsException(destination.toString());
         }
         if (Files.isDirectory(destination)) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "저장경로는 반드시 절대경로로 표기된 파일 경로이어야 합니다. destination=%s", destination);
+            throw ExceptionUtils.newException(IllegalArgumentException.class,
+                    "저장경로는 반드시 절대경로로 표기된 파일 경로이어야 합니다. destination=%s", destination);
         }
         // #3. 저장경로에 이미 파일이 존재하는 경우 삭제
         Files.deleteIfExists(destination);
@@ -606,7 +647,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotBlank String destination) throws IOException {
@@ -616,27 +658,32 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.lang.String, boolean)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite)
+            throws IOException {
         return download(source, destination, DEFAULT_CONNECT_TIMEOUT, overwrite);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.lang.String, int)
      */
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout)
+            throws IOException {
         return download(source, destination, connectTimeout, true);
     }
 
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
+     *      java.lang.String, int, boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.get(...)
@@ -644,7 +691,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout, boolean overwrite) throws IOException {
+    public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout,
+            boolean overwrite) throws IOException {
         return download(source, Paths.get(destination), connectTimeout, overwrite);
     }
 
@@ -685,7 +733,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일 유형 조회를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, pathname, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            logger.error("파일 유형 조회를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, pathname,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<FileType>().setMessage("파일 유형 조회를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
@@ -744,7 +793,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("파일/디렉토리 조회를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            logger.error("파일/디렉토리 조회를 실패하였습니다. connection={}, filepath={}, connect-timeout={}", this.ssh, filepath,
+                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
             return new Result<List<LsEntry>>().setMessage("파일/디렉토리 조회를 실패하였습니다. 원인=%s", e.getMessage());
         });
     }
@@ -788,9 +838,11 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         };
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
-            logger.error("디렉토리 생성 도중 에러가 발생하였습니다. connnection={}, directory={}, connect-timeout={}", this.ssh, directory, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
-            return new Result<Boolean>().setMessage("디렉토리 생성 도중 에러가 발생하였습니다. connection=%s, directory=%s, connect-timeout=%,d, 원인=%s", this.ssh, directory, connectTimeout,
-                    e.getMessage());
+            logger.error("디렉토리 생성 도중 에러가 발생하였습니다. connnection={}, directory={}, connect-timeout={}", this.ssh,
+                    directory, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage(
+                    "디렉토리 생성 도중 에러가 발생하였습니다. connection=%s, directory=%s, connect-timeout=%,d, 원인=%s", this.ssh,
+                    directory, connectTimeout, e.getMessage());
         });
     }
 
@@ -811,10 +863,12 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
+     *      boolean)
      */
     @Override
-    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, boolean overwrite) throws IOException {
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, boolean overwrite)
+            throws IOException {
         return move(source, destination, DEFAULT_CONNECT_TIMEOUT, overwrite);
     }
 
@@ -823,10 +877,12 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
+     *      int)
      */
     @Override
-    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout) throws IOException {
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout)
+            throws IOException {
         return move(source, destination, connectTimeout, false);
     }
 
@@ -835,11 +891,14 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
+     *      int, boolean)
      */
     @Override
-    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout, boolean overwrite) throws IOException {
-        logger.debug("[move] source={}, destination={}, connection-timeout={}ms, overwrite={}", source, destination, connectTimeout, overwrite);
+    public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout,
+            boolean overwrite) throws IOException {
+        logger.debug("[move] source={}, destination={}, connection-timeout={}ms, overwrite={}", source, destination,
+                connectTimeout, overwrite);
         return changeLocation(source, destination, connectTimeout, overwrite, false);
     }
 
@@ -938,8 +997,9 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
         final boolean isFile = FileType.REGULAR_FILE == fileType;
 
         return executeOnChannel(ChannelType.EXEC, connectTimeout, false, action, e -> {
-            String errMsg = String.format("%s(%s) 삭제 도중 에러가 발생하였습니다. connnection=%s, connect-timeout=%s, 원인=%s", isFile ? "파일" : "디렉토리", pathname, this.ssh,
-                    NumberUtils.INT_TO_STR.apply(connectTimeout), e.getMessage());
+            String errMsg = String.format("%s(%s) 삭제 도중 에러가 발생하였습니다. connnection=%s, connect-timeout=%s, 원인=%s",
+                    isFile ? "파일" : "디렉토리", pathname, this.ssh, NumberUtils.INT_TO_STR.apply(connectTimeout),
+                    e.getMessage());
             logger.error(errMsg, e);
             return new Result<Boolean>().setMessage(errMsg);
         });
@@ -1008,7 +1068,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String,
+     *      int)
      */
     @Override
     public Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination, @Min(1) int connectTimeout) {
@@ -1018,7 +1079,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull File source, @NotBlank String destination) throws IOException {
@@ -1029,7 +1091,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2020. 10. 14.
      * @throws IOException
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File,
+     *      java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Files.newInputStream(...)
@@ -1037,14 +1100,17 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> upload(@NotNull File source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException {
-        return upload(Files.newInputStream(Paths.get(source.toURI()), StandardOpenOption.READ), destination, connectTimeout);
+    public Result<Boolean> upload(@NotNull File source, @NotBlank String destination, @Min(1) int connectTimeout)
+            throws IOException {
+        return upload(Files.newInputStream(Paths.get(source.toURI()), StandardOpenOption.READ), destination,
+                connectTimeout);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination) {
@@ -1055,7 +1121,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
+     *      java.lang.String, boolean)
      */
     @Override
     public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, boolean autoClose) {
@@ -1065,10 +1132,12 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
+     *      java.lang.String, int)
      */
     @Override
-    public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, @Min(1) int connectTimeout) {
+    public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination,
+            @Min(1) int connectTimeout) {
         return upload(source, destination, connectTimeout, true);
     }
 
@@ -1076,7 +1145,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
+     *      java.lang.String, int, boolean)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -1084,13 +1154,15 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout, boolean autoClose) {
+    public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, int connectTimeout,
+            boolean autoClose) {
         Objects.requireNonNull(source);
         Objects.requireNonNull(destination);
 
         // 절대 경로 확인
         if (!destination.startsWith("/")) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "데이터 저장경로는 절대경로('/'로 시작)이어야 합니다. destination=%s", destination);
+            throw ExceptionUtils.newException(IllegalArgumentException.class,
+                    "데이터 저장경로는 절대경로('/'로 시작)이어야 합니다. destination=%s", destination);
         }
 
         SftpFunction<ChannelSftp, Result<Boolean>> action = channel -> {
@@ -1103,7 +1175,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
                 throw e;
             } finally {
                 if (autoClose) {
-                    // PATCH [2020. 12. 24.]: 자원 해제 | Park_Jun_Hong_(parkjunhong77@gmail.com)
+                    // PATCH [2020. 12. 24.]: 자원 해제 |
+                    // Park_Jun_Hong_(parkjunhong77@gmail.com)
                     IOUtils.close(source);
                 }
             }
@@ -1111,19 +1184,22 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
 
         return executeOnChannel(ChannelType.SFTP, connectTimeout, true, action, e -> {
             updateProgressState(true,
-                    String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d", this.ssh, source, destination, connectTimeout));
+                    String.format("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d",
+                            this.ssh, source, destination, connectTimeout));
 
-            logger.error("파일 업로드를 실패하였습니다. connnection={}, source={}, destination={}, connect-timeout={}", this.ssh, source, destination,
-                    NumberUtils.INT_TO_STR.apply(connectTimeout), e);
-            return new Result<Boolean>().setMessage("파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d, 원인=%s", this.ssh, source, destination,
-                    connectTimeout, e.getMessage());
+            logger.error("파일 업로드를 실패하였습니다. connnection={}, source={}, destination={}, connect-timeout={}", this.ssh,
+                    source, destination, NumberUtils.INT_TO_STR.apply(connectTimeout), e);
+            return new Result<Boolean>().setMessage(
+                    "파일 업로드를 실패하였습니다. connection=%s, source=%s, destination=%s, connect-timeout=%,d, 원인=%s", this.ssh,
+                    source, destination, connectTimeout, e.getMessage());
         });
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull Path source, @NotBlank String destination) throws IOException {
@@ -1133,7 +1209,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path,
+     *      java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Files.newInputStream(...)
@@ -1141,7 +1218,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> upload(@NotNull Path source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException {
+    public Result<Boolean> upload(@NotNull Path source, @NotBlank String destination, @Min(1) int connectTimeout)
+            throws IOException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(destination);
 
@@ -1155,7 +1233,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotBlank String source, @NotBlank String destination) throws IOException {
@@ -1165,7 +1244,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String,
+     *      java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Paths.get(...)
@@ -1173,14 +1253,16 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     // [TODO] 향후 JDK 자체 지원 또는 외부 Stub 환경이 갖춰지면 '제거'
     @SuppressWarnings("null")
     @Override
-    public Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout) throws IOException {
+    public Result<Boolean> upload(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout)
+            throws IOException {
         return upload(Paths.get(source), destination, connectTimeout);
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
+     *      java.lang.String)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination) {
@@ -1190,7 +1272,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, java.nio.charset.Charset)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
+     *      java.lang.String, java.nio.charset.Charset)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, Charset charset) {
@@ -1200,22 +1283,26 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
+     *      java.lang.String, int)
      */
     @Override
-    public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout) {
+    public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination,
+            @Min(1) int connectTimeout) {
         return uploadString(source, destination, connectTimeout, CharUtils.defaultCharset());
     }
 
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int,
-     *      java.nio.charset.Charset)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
+     *      java.lang.String, int, java.nio.charset.Charset)
      */
     @Override
-    public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout, @Nullable Charset charset) {
-        return upload(new ByteArrayInputStream(source.getBytes(CharUtils.requireCharset(charset))), destination, connectTimeout);
+    public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination,
+            @Min(1) int connectTimeout, @Nullable Charset charset) {
+        return upload(new ByteArrayInputStream(source.getBytes(CharUtils.requireCharset(charset))), destination,
+                connectTimeout);
     }
 
 }
