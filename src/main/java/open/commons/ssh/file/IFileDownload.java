@@ -84,8 +84,7 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -137,8 +136,7 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -283,8 +281,7 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -336,8 +333,7 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *
@@ -385,8 +381,7 @@ public interface IFileDownload {
      *            데이터 저장 경로 (절대경로)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      * @return
      *
      * @since 2020. 10. 14.
@@ -438,8 +433,7 @@ public interface IFileDownload {
      *            접속대기 제한시간 (단위: ms)
      * @param overwrite
      *            데이터 저장 경로에 이미 파일이 존재하는 경우 삭제하고 덮어쓸지 여부.<br>
-     *            <code>false</code>인 경우 이미 파일이 존재할 때는
-     *            {@link FileAlreadyExistsException}을 발생시킨다.
+     *            <code>false</code>인 경우 이미 파일이 존재할 때는 {@link FileAlreadyExistsException}을 발생시킨다.
      *
      * @return
      *

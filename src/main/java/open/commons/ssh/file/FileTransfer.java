@@ -231,8 +231,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * 
      * @since 2020. 10. 26.
      *
-     * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int,
-     *      int)
+     * @see open.commons.ssh.file.IFile#chmodOtcalMode(java.lang.String, int, int)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -289,8 +288,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
-     *      boolean)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, boolean)
      * @see #copy(String, String, int, boolean)
      */
     @Override
@@ -304,8 +302,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
-     *      int)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int)
      * @see #copy(String, String, int, boolean)
      */
     @Override
@@ -319,8 +316,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String,
-     *      int, boolean)
+     * @see open.commons.ssh.file.IFile#copy(java.lang.String, java.lang.String, int, boolean)
      */
     @Override
     public Result<Boolean> copy(@NotBlank String source, @NotBlank String destination, int connectTimeout,
@@ -442,8 +438,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.File)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull File destination) throws IOException {
@@ -453,8 +448,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.File, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, boolean)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull File destination, boolean overwrite)
@@ -465,8 +459,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.File, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull File destination, @Min(1) int connectTimeout)
@@ -477,8 +470,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.File, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.File, int,
+     *      boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.get(...)
@@ -494,8 +487,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.OutputStream)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination) {
@@ -506,8 +498,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.OutputStream, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream,
+     *      boolean)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination, boolean autoClose) {
@@ -517,8 +509,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.OutputStream, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream,
+     *      int)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull OutputStream destination,
@@ -530,8 +522,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.io.OutputStream, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.io.OutputStream,
+     *      int, boolean)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -570,8 +562,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.nio.file.Path)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull Path destination) throws IOException {
@@ -581,8 +572,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.nio.file.Path, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path,
+     *      boolean)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, boolean overwrite)
@@ -593,8 +584,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.nio.file.Path, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotNull Path destination, @Min(1) int connectTimeout)
@@ -605,8 +595,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.nio.file.Path, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.nio.file.Path, int,
+     *      boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.newOutputStream(...)
@@ -647,8 +637,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotBlank String destination) throws IOException {
@@ -658,8 +647,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String,
+     *      boolean)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, boolean overwrite)
@@ -670,8 +659,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int)
      */
     @Override
     public Result<Boolean> download(@NotBlank String source, @NotBlank String destination, @Min(1) int connectTimeout)
@@ -682,8 +670,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 15.
      *
-     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String,
-     *      java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFileDownload#download(java.lang.String, java.lang.String, int,
+     *      boolean)
      */
     // 아래 내용에 적용됨.
     // - Files.get(...)
@@ -863,8 +851,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
-     *      boolean)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, boolean)
      */
     @Override
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, boolean overwrite)
@@ -877,8 +864,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
-     *      int)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int)
      */
     @Override
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout)
@@ -891,8 +877,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2021. 10. 28.
      * @version 0.2.0
      *
-     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String,
-     *      int, boolean)
+     * @see open.commons.ssh.file.IFile#move(java.lang.String, java.lang.String, int, boolean)
      */
     @Override
     public Result<Boolean> move(@NotBlank String source, @NotBlank String destination, int connectTimeout,
@@ -1068,8 +1053,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String,
-     *      int)
+     * @see open.commons.ssh.file.IFileUpload#upload(byte[], java.lang.String, int)
      */
     @Override
     public Result<Boolean> upload(@NotNull byte[] source, @NotBlank String destination, @Min(1) int connectTimeout) {
@@ -1079,8 +1063,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull File source, @NotBlank String destination) throws IOException {
@@ -1091,8 +1074,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2020. 10. 14.
      * @throws IOException
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.File, java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Files.newInputStream(...)
@@ -1109,8 +1091,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination) {
@@ -1121,8 +1102,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
-     *      java.lang.String, boolean)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, boolean)
      */
     @Override
     public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination, boolean autoClose) {
@@ -1132,8 +1112,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int)
      */
     @Override
     public Result<Boolean> upload(@NotNull InputStream source, @NotBlank String destination,
@@ -1145,8 +1124,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
      * @since 2025. 7. 23.
      * @version 0.4.0
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream,
-     *      java.lang.String, int, boolean)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.io.InputStream, java.lang.String, int,
+     *      boolean)
      */
     // 아래 내용에 적용됨.
     // - String.format(...)
@@ -1198,8 +1177,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotNull Path source, @NotBlank String destination) throws IOException {
@@ -1209,8 +1187,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.nio.file.Path, java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Files.newInputStream(...)
@@ -1233,8 +1210,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String)
      */
     @Override
     public Result<Boolean> upload(@NotBlank String source, @NotBlank String destination) throws IOException {
@@ -1244,8 +1220,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#upload(java.lang.String, java.lang.String, int)
      */
     // 아래 내용에 적용됨.
     // - Paths.get(...)
@@ -1261,8 +1236,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
-     *      java.lang.String)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination) {
@@ -1272,8 +1246,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
-     *      java.lang.String, java.nio.charset.Charset)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String,
+     *      java.nio.charset.Charset)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination, Charset charset) {
@@ -1283,8 +1257,7 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
-     *      java.lang.String, int)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination,
@@ -1295,8 +1268,8 @@ public class FileTransfer extends SshClient implements IFileUpload, IFileDownloa
     /**
      * @since 2020. 10. 14.
      *
-     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String,
-     *      java.lang.String, int, java.nio.charset.Charset)
+     * @see open.commons.ssh.file.IFileUpload#uploadString(java.lang.String, java.lang.String, int,
+     *      java.nio.charset.Charset)
      */
     @Override
     public Result<Boolean> uploadString(@NotBlank String source, @NotBlank String destination,

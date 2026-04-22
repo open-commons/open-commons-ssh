@@ -110,8 +110,7 @@ public interface IFile {
      *            복사될 대상 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @throws IOException
      *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
@@ -140,8 +139,7 @@ public interface IFile {
      *            대상 경로에 파일이 존재할 경우 덮어쓰기 여부
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @throws IOException
      *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
@@ -171,8 +169,7 @@ public interface IFile {
      *            접속대기 제한시간 (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @throws IOException
      *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
@@ -204,8 +201,7 @@ public interface IFile {
      *            대상 경로에 파일이 존재할 경우 덮어쓰기 여부
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @throws IOException
      *             파일 복사 중 네트워크 입출력 오류가 발생한 경우
@@ -231,8 +227,7 @@ public interface IFile {
      *            삭제할 파일 경로 (절대 {@code null} 및 빈 문자열 불가)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
      */
@@ -255,8 +250,7 @@ public interface IFile {
      *            접속대기 제한 시간 (단위: ms, 1 이상이어야 함)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
      */
@@ -277,8 +271,7 @@ public interface IFile {
      *            삭제할 디렉토리 경로 (절대 {@code null} 및 빈 문자열 불가)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
      */
@@ -301,8 +294,7 @@ public interface IFile {
      *            접속대기 제한 시간 (단위: ms, 1 이상이어야 함)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 {@code true}를 반환하며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 27.
      */
@@ -366,8 +358,7 @@ public interface IFile {
      *            대상 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -397,8 +388,7 @@ public interface IFile {
      *            접속대기 제한 시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -426,8 +416,7 @@ public interface IFile {
      *            대상 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -457,8 +446,7 @@ public interface IFile {
      *            접속대기 제한 시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -486,8 +474,7 @@ public interface IFile {
      *            대상 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -517,8 +504,7 @@ public interface IFile {
      *            접속대기 제한 시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -546,8 +532,7 @@ public interface IFile {
      *            대상 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -577,8 +562,7 @@ public interface IFile {
      *            접속대기 제한 시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2021. 10. 28.
      * @version 0.2.0
@@ -606,8 +590,8 @@ public interface IFile {
      *            파일 또는 디렉토리 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대
-     *         {@code null}이 아님을 보장함.<br>
+     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대 {@code null}이 아님을
+     *         보장함.<br>
      *         해당 경로가 존재하지 않는 경우 빈 목록(Empty List)을 제공.
      *
      * @since 2020. 10. 23.
@@ -630,8 +614,8 @@ public interface IFile {
      *            접속대기 제한시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대
-     *         {@code null}이 아님을 보장함.<br>
+     *         작업 성공 시 내부 데이터({@link List})와 리스트 내의 각 원소({@link LsEntry}) 모두 절대 {@code null}이 아님을
+     *         보장함.<br>
      *         해당 경로가 존재하지 않는 경우 빈 목록(Empty List)을 제공.
      *
      * @since 2020. 10. 23.
@@ -652,8 +636,7 @@ public interface IFile {
      *            디렉토리 경로
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 26.
      */
@@ -675,8 +658,7 @@ public interface IFile {
      *            접속대기 제한시간. (단위: ms)
      *
      * @return 실행 결과를 담은 {@link Result} 객체 (절대 {@code null}이 아님). <br>
-     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대
-     *         {@code null}이 아님.
+     *         작업 성공 시 내부 데이터({@link Boolean})는 논리값(true/false)을 가지며 절대 {@code null}이 아님.
      *
      * @since 2020. 10. 26.
      */

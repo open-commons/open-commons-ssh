@@ -283,8 +283,7 @@ public class TransferProgressMonitor implements SftpProgressMonitor {
     /**
      * @since 2020. 10. 15.
      *
-     * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String,
-     *      java.lang.String, long)
+     * @see com.jcraft.jsch.SftpProgressMonitor#init(int, java.lang.String, java.lang.String, long)
      */
     // 아래 내용에 적용됨.
     // - public void init(int op, String src, String dest, long max) {
