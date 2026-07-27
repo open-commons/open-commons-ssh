@@ -1,3 +1,8 @@
+[2026/07/27]
+- Dependency
+  + Updated
+    + com.github.nwiede:jsch:2.28.5
+  
 [2026/05/26]
 - SnapShot 배포정보를 내부 도메인으로 변경 (외부 도메인 업로드 기능 차단)
 
